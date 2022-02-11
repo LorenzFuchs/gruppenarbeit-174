@@ -2,14 +2,22 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'PT Sans', sans-serif;
-    ;
 }
 
+h1 {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+}
+
+.header-container{
+    margin-left: 12px;
+}
 .bold {
     font-family: 'PT Sans BOLD'
 }
 
 .subhead {
+    margin: 0;
     font-size: medium;
     color: rgb(30, 49, 144)
 }
@@ -21,6 +29,28 @@ body {
 }
 
 .categories-container {
+    margin-left: 12px;
+    margin-right: 12px;
     display: flex;
     justify-content: space-between;
+    margin-top: 2em;
+}
+
+.ticket {
+    background-color: rgb(244, 243, 251);
+    border-radius: 6px;
+    margin: 12px;
+    padding: 14px;
+}
+
+.b-l-orange {
+    border-left: solid 5px rgb(255, 176, 113);
+}
+
+.b-l-purple {
+    border-left: solid 5px rgb(224, 104, 255);
+}
+
+.b-l-green {
+    border-left: solid 5px rgb(77, 170, 95);
 }
