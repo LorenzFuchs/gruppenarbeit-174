@@ -12,37 +12,39 @@
         rel="stylesheet">
     <script src="board.js"></script>
     <link rel="stylesheet" href="board.css">
+    <script src="insert_header.js"></script>
 
 </head>
 
-<body>
-<div class="wholestatusofTask">
-    <div>
-        <div class="statusOfTask">
-            <span>TO DO</span>
-            <div id="toDo"></div>
+<body onload="includeHTML()">
+    <div class="w3_navbar_height" w3-include-html="Templates/navbar.html"></div>
+    <div class="wholestatusofTask">
+        <div>
+            <div class="statusOfTask">
+                <span>TO DO</span>
+                <div id="toDo"></div>
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="statusOfTask">
-            <span>IN PROGRESS</span>
-            <div id="inProgress"></div>
+        <div>
+            <div class="statusOfTask">
+                <span>IN PROGRESS</span>
+                <div id="inProgress"></div>
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="statusOfTask">
-            <span>TESTING</span>
-            <div id="testing"></div>
+        <div>
+            <div class="statusOfTask">
+                <span>TESTING</span>
+                <div id="testing"></div>
+            </div>
         </div>
-    </div>
-    <div>
-        <div class="statusOfTask">
-            <span>DONE</span>
-            <div id="done"></div>
+        <div>
+            <div class="statusOfTask">
+                <span>DONE</span>
+                <div id="done"></div>
+            </div>
         </div>
+
     </div>
-    
-</div>
 </body>
 
 </html>

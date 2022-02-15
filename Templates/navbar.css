@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    height: 100vh;
+    
+    
+}
+
+
+.Navigation {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    
+}
+
+.Navigation div {
+    margin-bottom: 20px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Navigation a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.Navigation a:hover {
+    opacity: 1;
+    
+}
+
+.Navbar {
+    background-color: #1e3190;
+    height: 100%;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+  
+}
+
+.Logo img {
+    margin-top: 30px;
+}
+
+.me {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 2px solid lightgray;
+    cursor: pointer;
+
+}
+
+.me:hover {
+    opacity: 0.5;
+}
+
+.Navigation_all {
+    height: 823px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+span {
+    color: #1e3190;
+
+}
+
+.w3_navbar_height {
+    height: 100%;
+}
