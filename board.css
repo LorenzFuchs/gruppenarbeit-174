@@ -20,15 +20,28 @@ span {
     margin-left: 30px;
     margin-right: 30px;
 }
-.statusOfTask div {
-    width: 380px;
-    background-color: #f4f3fb;
-    min-height: 800px;
-    
-    
 
-}
 
 .wholestatusofTask {
     display: flex;
+}
+
+.status {
+    width: 380px;
+    background-color: #f4f3fb;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.openTask {
+    height: 100px;
+    width: 60px;
+    background-color: lightcoral;
+    margin-top: 20px;
+}
+
+.drag-area-highlight {
+    background-color: rgba(0, 0, 0, 0.2);
 }
