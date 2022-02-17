@@ -1,0 +1,49 @@
+
+
+<script src="./mini_backend.js"></script>
+<script>
+    setURL('http://gruppe-174.developerakademie.net/smallest_backend_ever');
+</script>
+
+
+<script>
+
+/*    
+Save
+Add a user with this function: */
+
+function addUser() {
+    users.push('John);
+    backend.setItem('users', JSON.stringify(users));
+}
+
+/*
+Add a user with this function: */
+
+async function addUser() {
+    users.push('John);
+    await backend.setItem('users', JSON.stringify(users));
+}
+/*
+Load
+Fill your empty array with users from the Server */
+
+async function init() {
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+}
+
+/*
+Delete all users from your array:*/
+
+function deleteUser(name) {
+  backend.deleteItem('users');
+}
+
+
+
+
+
+
+
+</script>
