@@ -16,7 +16,8 @@ function createTask() {
         "category": category.value,
         "description": description.value,
         "date": date.value,
-        "agency": agency.value
+        "agency": agency.value,
+        "profil": 'img/profil/profil4.jpg'
     };
 
     tasks.push(task);

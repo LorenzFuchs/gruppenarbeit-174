@@ -17,7 +17,7 @@ function addUser() {
 
 async function init() {
     await downloadFromServer();
-    users = JSON.parse(backend.getItem('tasks')) || [];
+    allTasks = JSON.parse(backend.getItem('tasks')) || [];
 }
  
 
