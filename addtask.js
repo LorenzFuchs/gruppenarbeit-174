@@ -23,6 +23,7 @@ function createTask() {
     tasks.push(task);
     console.log(tasks);
     backend.setItem('tasks', JSON.stringify(tasks));        //backend connection
+    
     clearForm();
     
     

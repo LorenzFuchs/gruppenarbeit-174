@@ -1,0 +1,87 @@
+.d-none {
+    display: none;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column1 {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+h2 {
+    color: blue;
+    font-size: large;
+}
+
+h1 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+span {
+    color: blue;
+}
+
+.bgr-addtask {
+    background-color: aliceblue;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.bgr-input {
+    height: 30px;
+    padding: 0;
+}
+
+textarea {
+    border-radius: 5px;
+    resize: none;
+}
+
+.profil-img {
+    border-radius: 100%;
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+}
+
+.grey-button {
+    background-color: aliceblue;
+    border: none;
+    padding: 12px;
+}
+
+.blue-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.start {
+    display: flex;
+    justify-content: start;
+
+}
+
+.end {
+    justify-content: end;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
