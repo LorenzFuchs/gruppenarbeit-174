@@ -22,11 +22,11 @@
 
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), init()">
     
     <div w3-include-html="Templates/navbar.html"></div>
     <div>
-        <button onclick="addUser('John')">TEST</button>
+        <button onclick="addUser()">TEST</button>
     <div class="header-container">
         <h1 class="bold">Backlog</h1>
         <h3 class="subhead">Kanban Management System</h3>
@@ -38,7 +38,8 @@
         <span class="bold categories">DETAILS</span>
 
     </div>
-    <div class="ticket b-l-orange">
+    <div id="ticket-wrapper" class="ticket-wrapper">
+    <div id="ticket" class="ticket b-l-orange">
         <div class="left-container">
         <img src="img/profil/profil1.jpg" class="ticket-img">
         <div class="name-mail">
@@ -95,7 +96,7 @@
         </div>
     </div>
     </div>
-
+</div>
 </body>
 
 </html>
