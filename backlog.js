@@ -1,8 +1,6 @@
 let allTasks = [];
-let users = [];
 let activeTask = [];
-let tasks = (`{["\"title\": mus,", "\"category\": what,", "\"description\": something,", "\"date\": yesterday,", "\"agency\": lol,", "\"profil\": 'img/profil/profil4.jpg'"]
-}`);
+
 
 /*
 async function loadAllTasks(){
@@ -28,12 +26,17 @@ async function init() {
     console.log(allTasks);
     AddTicket();
 }
-
+ 
 function AddTicket() {
+    for (let i = 0; i < allTasks.length; i++) {
+        task = allTasks[i];
+        console.log(task);
+        debugger
+    
     document.getElementById('ticket-wrapper').innerHTML = `
     <div class="ticket b-l-orange">
     <div class="left-container">
-    <img src="${allTasks[0]['profil']}" class="ticket-img">
+    <img src="${allTasks[i][0]['profil']}" class="ticket-img">
     <div class="name-mail">
         <p>Gus K. Medina</p>
         <a href="#">gusmedina@gmail.com</a>
@@ -41,11 +44,11 @@ function AddTicket() {
 </div>
     <div class="ticket-category">Marketing</div>
     <div class="ticket-details">
-        <p>${allTasks[0]['description']} </p>
+        <p>${allTasks[i][0]['description']} </p>
     </div>
 </div>`
 ;
-
+}
 }
 
 /*
