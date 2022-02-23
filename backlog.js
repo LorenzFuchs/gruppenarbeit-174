@@ -1,6 +1,6 @@
 let allTasks = [];
-let activeTask = [];
-
+let activeTasks = [];
+let task =[];
 
 /*
 async function loadAllTasks(){
@@ -10,15 +10,6 @@ async function loadAllTasks(){
 }
 */
 
-function addUser() {
-    var stringified = (`{["\"title\": mus,", "\"category\": what,", "\"description\": something,", "\"date\": yesterday,", "\"agency\": lol,", "\"profil\": 'img/profil/profil4.jpg'"]
-}`);
-    var parsedObj = JSON.parse(stringified);
-    console.log(parsedObj);
-    // users.push('Klaus');
-    //backend.setItem('users', JSON.stringify(users));
-    console.log(tasks);
-}
 
 async function init() {
     await downloadFromServer();
@@ -28,15 +19,18 @@ async function init() {
 }
  
 function AddTicket() {
+   document.getElementById('ticket-wrapper').innerHTML = ``;
+   
     for (let i = 0; i < allTasks.length; i++) {
         task = allTasks[i];
         console.log(task);
-        debugger
+       
     
-    document.getElementById('ticket-wrapper').innerHTML = `
-    <div class="ticket b-l-orange">
+    
+    document.getElementById('ticket-wrapper').innerHTML += `
+    <div onclick="activeTask('${'i'}')" class="ticket b-l-orange">
     <div class="left-container">
-    <img src="${allTasks[i][0]['profil']}" class="ticket-img">
+    <img src="${task['profil']}" class="ticket-img">
     <div class="name-mail">
         <p>Gus K. Medina</p>
         <a href="#">gusmedina@gmail.com</a>
@@ -44,12 +38,28 @@ function AddTicket() {
 </div>
     <div class="ticket-category">Marketing</div>
     <div class="ticket-details">
-        <p>${allTasks[i][0]['description']} </p>
+        <p>${task['description']} </p>
     </div>
 </div>`
 ;
 }
 }
+
+function activeTask(){
+    let activeTask = {
+        "title": allTasks[0]['title'],
+        "category": allTasks[0]['category'],
+        "description": allTasks[0]['description'],
+        "date": allTasks[0]['date'],
+        "agency": allTasks[0]['agency'],
+        "profil": allTasks[0]['profil'],
+        'category': 'toDo'
+    };
+    activeTasks.push(activeTask);
+    console.log(activeTasks);
+    backend.setItem('activeTasks', JSON.stringify(activeTasks));
+}
+
 
 /*
 async function init() {
