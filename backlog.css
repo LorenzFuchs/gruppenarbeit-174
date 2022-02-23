@@ -49,18 +49,21 @@ h1 {
     font-size: large;
 }
 
-.b-l-orange {
+.b-l-Marketing {
     border-left: solid 5px rgb(255, 176, 113);
 }
 
-.b-l-purple {
+.b-l-Design {
     border-left: solid 5px rgb(224, 104, 255);
 }
 
-.b-l-green {
+.b-l-Sales {
     border-left: solid 5px rgb(77, 170, 95);
 }
 
+.b-l-Operations {
+    border-left: solid 5px #ffeb3b;
+}
 .ticket-img {
     border-radius: 100%;
     width: 4.3em;
@@ -88,4 +91,8 @@ h1 {
     
     min-width: 45%;
 
+}
+
+.d-none{
+    display: none;
 }

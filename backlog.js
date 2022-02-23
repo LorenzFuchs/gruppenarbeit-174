@@ -16,7 +16,7 @@ function AddTicket() {
         task = allTasks[i];
     
     document.getElementById('ticket-wrapper').innerHTML += `
-    <div onclick="activeTask('${'i'}')" class="ticket b-l-orange">
+    <div id="id${i}"onclick="activeTask('${i}')" class="ticket b-l-${task['category']}">
     <div class="left-container">
     <img src="${task['profil']}" class="ticket-img">
     <div class="name-mail">
@@ -24,7 +24,7 @@ function AddTicket() {
         <a href="#">gusmedina@gmail.com</a>
     </div>
 </div>
-    <div class="ticket-category">Marketing</div>
+    <div class="ticket-category">${task['category']}</div>
     <div class="ticket-details">
         <p>${task['description']} </p>
     </div>
@@ -33,21 +33,27 @@ function AddTicket() {
 }
 }
 
-function activeTask(){
+function activeTask(i){
     let activeTask = {
-        "title": allTasks[0]['title'],
-        "category": allTasks[0]['category'],
-        "description": allTasks[0]['description'],
-        "date": allTasks[0]['date'],
-        "agency": allTasks[0]['agency'],
-        "profil": allTasks[0]['profil'],
+        "title": allTasks[i]['title'],
+        "category": allTasks[i]['category'],
+        "description": allTasks[i]['description'],
+        "date": allTasks[i]['date'],
+        "urgency": allTasks[i]['urgency'],
+        "profil": allTasks[i]['profil'],
         'category': 'toDo'
     };
     activeTasks.push(activeTask);
     console.log(activeTasks);
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
+    removeTask(i);
 }
 
+function removeTask(i) {
+    var j = "id" + i;
+   var element = document.getElementById(j);
+   element.classList.add("d-none");
+}
 
 /*
 async function init() {
