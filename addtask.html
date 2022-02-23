@@ -5,70 +5,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Add Task</title>
     <link rel="stylesheet" href="addtask.css">
-    <script src="addtask.js"></script>
+    <link rel="stylesheet" href="Templates/navbar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Comforter&family=Nanum+Gothic:wght@700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-        <script src="insert_header.js"></script>
-        <script src="./mini_backend.js"></script>
+    <script src="insert_header.js"></script>
+    <script src="./mini_backend.js"></script>
+    <script src="addtask.js"></script>
+
 
 </head>
 
 <body onload="includeHTML()">
-    <div w3-include-html="Templates/navbar.html"></div>
-    <div ADDTASK id="addtask-container" class="right-container">
+    <div class="row">
+        <div w3-include-html="Templates/navbar.html"></div>
+        <div ADDTASK id="addtask-container">
 
-        <div class="column">
-            <div class="column">
-                <h1>Add Task</h1>
-                <span>Kanban Management System</span>
-            </div>
-           
-            <div class="bgr-addtask">
-                <form class="row" onsubmit="createTask()">
-                    <div TITLE-COLUMN class="column1">
-                        <h2>TITLE</h2>
-                        <input id="title" required class="bgr-input" type="text" placeholder="type the title">
-                        <h2>CATEGORY</h2>
-                        <select required id="category" class="bgr-input" id="category" placeholder="category"
-                            style="cursor: pointer;">
-                            <option>To Do</option>
-                            <option>Doing</option>
-                            <option>Testing</option>
-                            <option>Done</option>
-                        </select>
-                        <h2>DESCRIPTION</h2>
-                        <textarea id="description" required
-                            placeholder="Lorem ipsum dolor sit amet. Aut voluptatibus galisum ut aperiam repellat vel error."
-                            id="" cols="30" rows="7"></textarea>
-                    </div>
+            <div class="column left">
+                <div class="column">
+                    <h1>Add Task</h1>
+                    <h3>Kanban Management System</h3>
+                </div>
 
-                    <div DUEDATE-COLUMN class="column1">
-                        <h2>DUE DATE</h2>
-                        <input required id="date" class="bgr-input pointer" type="date">
-                        <h2>AGENCY</h2>
-                        <select required id="agency" class="bgr-input pointer" id="category" placeholder="category">
-                            <option>High</option>
-                            <option>Middle</option>
-                            <option>Low</option>
-                        </select>
-                        <h2>ASIGNED TO</h2>
-                        <div class="row start">
-                            <img class="profil-img" src="img/profil/profil4.jpg" alt=""
-                                style="margin-left: 8px; margin-right: 8px">
-                            <img class="pointer small-img" src="img/icon plus.png" alt="">
+                <div class="bgr-addtask">
+                    <form class="row space" onsubmit="createTask()">
+                        <div TITLE-COLUMN class="column1">
+                            <h2>TITLE</h2>
+                            <input id="title" class="bgr-input" type="text" placeholder="type the title">
+                            <h2>CATEGORY</h2>
+                            <select id="category" class="bgr-input" style="cursor: pointer;">
+                                <option>Marketing</option>
+                                <option>Design</option>
+                                <option>Customer Service</option>
+                                <option>Data</option>
+                            </select>
+                            <h2>DESCRIPTION</h2>
+                            <textarea id="description"
+                                placeholder="Lorem ipsum dolor sit amet. Aut voluptatibus galisum ut aperiam repellat vel error."
+                                id="" cols="30" rows="7"></textarea>
                         </div>
-                        <div class="row end">
-                            <button class="grey-button pointer">CANCEL</button>
-                            <button class="blue-button pointer">CREATE TASK</button>
-                        </div>
-                    </div>
 
-                </form>
+                        <div DUEDATE-COLUMN class="column1">
+                            <h2>DUE DATE</h2>
+                            <input id="date" class="bgr-input pointer" type="date">
+                            <h2>URGENCY</h2>
+                            <select id="urgency" class="bgr-input pointer">
+                                <option>High</option>
+                                <option>Middle</option>
+                                <option>Low</option>
+                            </select>
+
+
+
+                            <h2>ASIGNED TO</h2>
+                            <div class="row start">
+                                <button onclick="chooseAsignedTo()" class="plus-button"> <img class="pointer small-img plus-image" src="img/icon plus.png" alt=""> </button>
+                                <div id="asignedto"></div>
+                            </div>
+
+
+
+
+                            <div class="row end">
+                                <button class="grey-button pointer">CANCEL</button>
+                                <button class="blue-button pointer">CREATE TASK</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>

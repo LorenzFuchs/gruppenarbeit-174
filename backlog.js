@@ -2,15 +2,6 @@ let allTasks = [];
 let activeTasks = [];
 let task =[];
 
-/*
-async function loadAllTasks(){
-    await downloadFromServer();
-    allTasks = JSON.parse(backend.getItem('tasks')) || [];
-
-}
-*/
-
-
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('tasks')) || [];
@@ -19,13 +10,10 @@ async function init() {
 }
  
 function AddTicket() {
-   document.getElementById('ticket-wrapper').innerHTML = ``;
+   document.getElementById('ticket-wrapper').innerHTML = ``; 
    
     for (let i = 0; i < allTasks.length; i++) {
         task = allTasks[i];
-        console.log(task);
-       
-    
     
     document.getElementById('ticket-wrapper').innerHTML += `
     <div onclick="activeTask('${'i'}')" class="ticket b-l-orange">
