@@ -20,7 +20,7 @@
 
 </head>
 
-<body onload="includeHTML()">
+<body onload="init(), includeHTML()">
     <div class="row">
         <div w3-include-html="Templates/navbar.html"></div>
         <div ADDTASK id="addtask-container">
@@ -35,7 +35,7 @@
                     <form class="row space" onsubmit="createTask()">
                         <div TITLE-COLUMN class="column1">
                             <h2>TITLE</h2>
-                            <input id="title" class="bgr-input" type="text" placeholder="type the title">
+                            <input id="title" required class="bgr-input" type="text" placeholder="type the title">
                             <h2>CATEGORY</h2>
                             <select id="category" class="bgr-input" style="cursor: pointer;">
                                 <option>Marketing</option>
@@ -44,14 +44,14 @@
                                 <option>Operations</option>
                             </select>
                             <h2>DESCRIPTION</h2>
-                            <textarea id="description"
+                            <textarea required id="description"
                                 placeholder="Lorem ipsum dolor sit amet. Aut voluptatibus galisum ut aperiam repellat vel error."
                                 id="" cols="30" rows="7"></textarea>
                         </div>
 
                         <div DUEDATE-COLUMN class="column1">
                             <h2>DUE DATE</h2>
-                            <input id="date" class="bgr-input pointer" type="date">
+                            <input id="date" required class="bgr-input pointer" type="date">
                             <h2>URGENCY</h2>
                             <select id="urgency" class="bgr-input pointer">
                                 <option>High</option>

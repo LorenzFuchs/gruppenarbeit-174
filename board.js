@@ -1,21 +1,15 @@
-let Tasks = [{
-    'id': 0,
-    'title': 'Test0',
-    'category': 'toDo'
-}, {
-    'id': 1,
-    'title': 'Test1',
-    'category': 'toDo'
-}, {
-    'id': 2,
-    'title': 'Test2',
-    'category': 'toDo'
-}];
+async function init() {
+    await downloadFromServer();
+    activeTasks = JSON.parse(backend.getItem('activeTasks')) || [];
+    console.log(activeTasks);
+    updateHTML();
+    
+}
 
 let currentDraggedElement;
 
 function updateHTML() {
-    let todo = Tasks.filter(t => t['category'] == 'toDo');
+    let todo = activeTasks.filter(t => t['category'] == 'toDo');
 
     document.getElementById('toDo').innerHTML = '';
 
@@ -24,7 +18,7 @@ function updateHTML() {
         document.getElementById('toDo').innerHTML += generateTodoHTML(element);
     }
 
-    let inprogress = Tasks.filter(t => t['category'] == 'inProgress');
+    let inprogress = activeTasks.filter(t => t['category'] == 'inProgress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -33,7 +27,7 @@ function updateHTML() {
         document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
     }
 
-    let testing = Tasks.filter(t => t['category'] == 'testing');
+    let testing = activeTasks.filter(t => t['category'] == 'testing');
 
     document.getElementById('testing').innerHTML = '';
 
@@ -42,7 +36,7 @@ function updateHTML() {
         document.getElementById('testing').innerHTML += generateTodoHTML(element);
     }
 
-    let done = Tasks.filter(t => t['category'] == 'done');
+    let done = activeTasks.filter(t => t['category'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -53,12 +47,26 @@ function updateHTML() {
 
 }
 
-function startDragging(id) {
-    currentDraggedElement = id;
+function startDragging(title) {
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+
+
+    currentDraggedElement = index;
 }
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="openTask">${element['title']}</div>`;
+    return `
+    <div draggable="true" ondragstart="startDragging('${element['title']}')">
+     <div onclick="changeTask('${element['title']}', '${element['category']}', 'openTask${element['title']}', '${element['date']}', '${element['description']}')" class="openTask" id="openTask${element['title']}">
+      <div><b>${element['title']}</b></div>
+      <div>${element['date']}</div>
+      <div><img class="me1" src="${element['Image']}"></div>
+     </div>
+     <div class="deletediv"><img onclick="deleteTask('${element['title']}')" class="trash" src="img/trash.png"></div>
+     </div>`;
 }
 
 function allowDrop(ev) {
@@ -66,7 +74,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    Tasks[currentDraggedElement]['category'] = category;
+    activeTasks[currentDraggedElement]['category'] = category;
     updateHTML();
 }
 
@@ -76,4 +84,92 @@ function highlight(id) {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+function deleteTask(title) {
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+    activeTasks.splice(index, 1);
+    backend.setItem('activeTasks', JSON.stringify(activeTasks));
+    updateHTML();
+}
+
+function changeTask(title, category, date, description) {
+
+    let checkIfIdExist = document.getElementById('changeText');
+    if(checkIfIdExist){
+        document.getElementById('changeText').remove();
+    
+    
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+
+
+    document.getElementById('wholestatusofTask').innerHTML += `
+    <div id="changeText" class="changeText">
+     <div class="inputfields">
+      <input id="Title_${title}" type="text">
+      <input type="date" name="" id="date_${date}">
+      <textarea type="text" id="description_${description}"></textarea>
+      <button onclick="changeInput('${title}', '${category}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+     </div>
+    </div>`;
+    
+    document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+    document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+    document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
+    
+    }else {
+        var val = title;
+        var index = activeTasks.findIndex(function (item, i) {
+            return item.title === val
+        });
+    
+    
+        document.getElementById('wholestatusofTask').innerHTML += `
+        <div id="changeText" class="changeText">
+         <div class="inputfields">
+          <input id="Title_${title}" type="text">
+          <input type="date" name="" id="date_${date}">
+          <textarea type="text" id="description_${description}"></textarea>
+          <button onclick="changeInput('${title}', '${category}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+         </div>
+        </div>`;
+        
+        document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+        document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+        document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
+    }
+    
+}
+
+function changeInput(title, category, idOfTitle, idOfDate, idOfDescription) {
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+
+    
+    let title1 = document.getElementById(idOfTitle).value;
+    let date = document.getElementById(idOfDate).value;
+    let description = document.getElementById(idOfDescription).value;
+    
+   
+
+    let task = {
+        
+        'title': title1,
+        'date': date,
+        'description': description, 
+        'category': category
+    }
+    
+       activeTasks.splice(index, 1, task);
+       backend.setItem('activeTasks', JSON.stringify(activeTasks));
+       updateHTML();
+       document.getElementById('changeText').remove();
 }

@@ -77,3 +77,7 @@ function chooseAsignedTo() {
     }
 }
 
+async function init() {
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
+}
