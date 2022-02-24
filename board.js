@@ -59,13 +59,14 @@ function startDragging(title) {
 
 function generateTodoHTML(element) {
     return `
-    <div>
-     <div  onclick="changeTask('${element['title']}', '${element['Status']}')" draggable="true" ondragstart="startDragging('${element['title']}')" class="openTask">
+    <div draggable="true" ondragstart="startDragging('${element['title']}')">
+     <div class="openTask">
       <div>${element['title']}</div>
       <div>${element['urgency']}</div>
+      <div>${element['date']}</div>
       <div><img class="me1" src="${element['Image']}"></div>
      </div>
-     <div><img onclick="deleteTask('${element['Title']}')" class="trash" src="img/trash.png"></div>
+     <div><img onclick="deleteTask('${element['title']}')" class="trash" src="img/trash.png"></div>
      </div>`;
 }
 
@@ -84,5 +85,15 @@ function highlight(id) {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+function deleteTask(title) {
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+    activeTasks.splice(index, 1);
+    backend.setItem('activeTasks', JSON.stringify(activeTasks));
+    updateHTML();
 }
 
