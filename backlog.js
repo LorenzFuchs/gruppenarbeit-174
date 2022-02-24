@@ -33,7 +33,7 @@ function AddTicket() {
 }
 }
 
-function activeTask(i){
+function activeTask(i){             //function to pass on JSON and remove from backlog
     let activeTask = {
         "title": allTasks[i]['title'],
         "category": allTasks[i]['category'],
@@ -54,23 +54,3 @@ function removeTask(i) {
    var element = document.getElementById(j);
    element.classList.add("d-none");
 }
-
-/*
-async function init() {
-    await downloadFromServer();
-    users = JSON.parse(backend.getItem('users')) || [];
-}
-
-function loadAllTasks(){
-    let allTasksAsString = localStorage.getItem('allTasks');
-    allTasks = JSON.parse(allTasksAsString);
-}
-{"tasks":"[{\"title\":\"MEINS\",\"category\":\"Testing\",\"description\":\"wr ar ar\",\"date\":\"2022-02-16\",\"agency\":\"High\"}]"}
-
-allTasks[0]['profil']
-        ${ allTasks[0]['title'] }
-    allTasks[0]['category']
-    allTasks[0]['description']
-    allTasks[0]['date']
-    allTasks[0]['agency']
-*/
