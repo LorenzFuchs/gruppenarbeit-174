@@ -42,7 +42,7 @@ function activeTask(i){             //function to pass on JSON and remove from b
         "date": allTasks[i]['date'],
         "urgency": allTasks[i]['urgency'],
         "profil": allTasks[i]['profil'],
-        'category': 'toDo'
+        "status": 'toDo'
     };
     activeTasks.push(activeTask);
     console.log(activeTasks);
