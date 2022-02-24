@@ -60,7 +60,7 @@ function startDragging(title) {
 function generateTodoHTML(element) {
     return `
     <div draggable="true" ondragstart="startDragging('${element['title']}')">
-     <div onclick="changeTask('${element['title']}', '${element['category']}', 'openTask${element['title']}')" class="openTask" id="openTask${element['title']}">
+     <div onclick="changeTask('${element['title']}', '${element['category']}', 'openTask${element['title']}', '${element['date']}', '${element['description']}')" class="openTask" id="openTask${element['title']}">
       <div>${element['title']}</div>
       <div>${element['date']}</div>
       <div><img class="me1" src="${element['Image']}"></div>
@@ -96,7 +96,12 @@ function deleteTask(title) {
     updateHTML();
 }
 
-function changeTask(title, category) {
+function changeTask(title, category, date, description) {
+
+    let checkIfIdExist = document.getElementById('changeText');
+    if(checkIfIdExist){
+        document.getElementById('changeText').remove();
+    
     
     var val = title;
     var index = activeTasks.findIndex(function (item, i) {
@@ -107,31 +112,51 @@ function changeTask(title, category) {
     document.getElementById('wholestatusofTask').innerHTML += `
     <div id="changeText" class="changeText">
      <div class="inputfields">
-      <input id="Title1" type="text">
-      <input type="date" name="" id="date1">
-      <textarea type="text" id="description1"></textarea>
-      <button onclick="changeInput('${title}', '${category}')">Ändern</button>
+      <input id="Title_${title}" type="text">
+      <input type="date" name="" id="date_${date}">
+      <textarea type="text" id="description_${description}"></textarea>
+      <button onclick="changeInput('${title}', '${category}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
      </div>
     </div>`;
     
-    document.getElementById('Title1').value = activeTasks[index]['title'];
-    document.getElementById('date1').value = activeTasks[index]['date'];
-    document.getElementById('description1').value = activeTasks[index]['description'];
+    document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+    document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+    document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
     
-
-
+    }else {
+        var val = title;
+        var index = activeTasks.findIndex(function (item, i) {
+            return item.title === val
+        });
+    
+    
+        document.getElementById('wholestatusofTask').innerHTML += `
+        <div id="changeText" class="changeText">
+         <div class="inputfields">
+          <input id="Title_${title}" type="text">
+          <input type="date" name="" id="date_${date}">
+          <textarea type="text" id="description_${description}"></textarea>
+          <button onclick="changeInput('${title}', '${category}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+         </div>
+        </div>`;
+        
+        document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+        document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+        document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
+    }
+    
 }
 
-function changeInput(title, category) {
+function changeInput(title, category, idOfTitle, idOfDate, idOfDescription) {
     var val = title;
     var index = activeTasks.findIndex(function (item, i) {
         return item.title === val
     });
 
     
-    let title1 = document.getElementById('Title1').value;
-    let date = document.getElementById('date1').value;
-    let description = document.getElementById('description1').value;
+    let title1 = document.getElementById(idOfTitle).value;
+    let date = document.getElementById(idOfDate).value;
+    let description = document.getElementById(idOfDescription).value;
     
    
 
