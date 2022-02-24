@@ -5,6 +5,7 @@ let task =[];
 async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('tasks')) || [];
+    activeTasks = JSON.parse(backend.getItem('activeTasks')) || [];
     console.log(allTasks);
     AddTicket();
 }
@@ -45,14 +46,17 @@ function activeTask(i){
     };
     activeTasks.push(activeTask);
     console.log(activeTasks);
-    backend.setItem('activeTasks', JSON.stringify(activeTasks));
     removeTask(i);
+    backend.setItem('activeTasks', JSON.stringify(activeTasks));
+    
 }
 
 function removeTask(i) {
     var j = "id" + i;
    var element = document.getElementById(j);
    element.classList.add("d-none");
+   allTasks.splice(i, 1);
+   backend.setItem('tasks', JSON.stringify(allTasks)); 
 }
 
 /*

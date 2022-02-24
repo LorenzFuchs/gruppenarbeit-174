@@ -24,6 +24,7 @@ span {
 
 .wholestatusofTask {
     display: flex;
+    height: 100%;
 }
 
 .status {
@@ -44,4 +45,31 @@ span {
 
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.2);
+}
+
+.openTask {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 150px;
+    background-color: lightcoral;
+    border-radius: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    
+}
+
+.openTask:hover {
+    border: 2px solid blue;
+}
+
+.trash {
+    height: 20px;
+    width: 20px;
+    bottom: 10px;
+    right: 5px;
+    cursor: pointer;
 }

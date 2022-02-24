@@ -1,21 +1,15 @@
-let Tasks = [{
-    'id': 0,
-    'title': 'Test0',
-    'category': 'toDo'
-}, {
-    'id': 1,
-    'title': 'Test1',
-    'category': 'toDo'
-}, {
-    'id': 2,
-    'title': 'Test2',
-    'category': 'toDo'
-}];
+async function init() {
+    await downloadFromServer();
+    activeTasks = JSON.parse(backend.getItem('activeTasks')) || [];
+    console.log(activeTasks);
+    updateHTML();
+    
+}
 
 let currentDraggedElement;
 
 function updateHTML() {
-    let todo = Tasks.filter(t => t['category'] == 'toDo');
+    let todo = activeTasks.filter(t => t['category'] == 'toDo');
 
     document.getElementById('toDo').innerHTML = '';
 
@@ -24,7 +18,7 @@ function updateHTML() {
         document.getElementById('toDo').innerHTML += generateTodoHTML(element);
     }
 
-    let inprogress = Tasks.filter(t => t['category'] == 'inProgress');
+    let inprogress = activeTasks.filter(t => t['category'] == 'inProgress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -33,7 +27,7 @@ function updateHTML() {
         document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
     }
 
-    let testing = Tasks.filter(t => t['category'] == 'testing');
+    let testing = activeTasks.filter(t => t['category'] == 'testing');
 
     document.getElementById('testing').innerHTML = '';
 
@@ -42,7 +36,7 @@ function updateHTML() {
         document.getElementById('testing').innerHTML += generateTodoHTML(element);
     }
 
-    let done = Tasks.filter(t => t['category'] == 'done');
+    let done = activeTasks.filter(t => t['category'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -53,12 +47,26 @@ function updateHTML() {
 
 }
 
-function startDragging(id) {
-    currentDraggedElement = id;
+function startDragging(title) {
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+
+
+    currentDraggedElement = index;
 }
 
 function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="openTask">${element['title']}</div>`;
+    return `
+    <div>
+     <div  onclick="changeTask('${element['title']}', '${element['Status']}')" draggable="true" ondragstart="startDragging('${element['title']}')" class="openTask">
+      <div>${element['title']}</div>
+      <div>${element['urgency']}</div>
+      <div><img class="me1" src="${element['Image']}"></div>
+     </div>
+     <div><img onclick="deleteTask('${element['Title']}')" class="trash" src="img/trash.png"></div>
+     </div>`;
 }
 
 function allowDrop(ev) {
@@ -66,7 +74,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-    Tasks[currentDraggedElement]['category'] = category;
+    activeTasks[currentDraggedElement]['category'] = category;
     updateHTML();
 }
 
@@ -77,3 +85,4 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
+
