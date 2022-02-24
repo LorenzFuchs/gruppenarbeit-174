@@ -74,3 +74,56 @@ span {
     right: 5px;
     cursor: pointer;
 }
+
+.deletediv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.changeText {
+    position: absolute;
+    top: 168px;
+    left: 630px;
+    height: 500px;
+    width: 500px;
+    background-color: lightcoral;
+    border-radius: 20px;
+    
+
+}
+
+.inputfields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputfields input {
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.inputfields textarea {
+    height: 120px;
+    width: 350px;
+    resize: none;
+    margin-top: 20px;
+}
+
+.inputfields button {
+    background-color: #1e3190;
+    color: white;
+    height: 50px;
+    width: 139px;
+    font-weight: bold;
+    border-radius: 12px;
+    font-size: 17px;
+    font-family: 'PT Sans', sans-serif;
+    margin-right: 30px;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px;
+
+}
+

@@ -60,13 +60,12 @@ function startDragging(title) {
 function generateTodoHTML(element) {
     return `
     <div draggable="true" ondragstart="startDragging('${element['title']}')">
-     <div class="openTask">
+     <div onclick="changeTask('${element['title']}', '${element['category']}', 'openTask${element['title']}')" class="openTask" id="openTask${element['title']}">
       <div>${element['title']}</div>
-      <div>${element['urgency']}</div>
       <div>${element['date']}</div>
       <div><img class="me1" src="${element['Image']}"></div>
      </div>
-     <div><img onclick="deleteTask('${element['title']}')" class="trash" src="img/trash.png"></div>
+     <div class="deletediv"><img onclick="deleteTask('${element['title']}')" class="trash" src="img/trash.png"></div>
      </div>`;
 }
 
@@ -97,3 +96,55 @@ function deleteTask(title) {
     updateHTML();
 }
 
+function changeTask(title, category) {
+    
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+
+
+    document.getElementById('wholestatusofTask').innerHTML += `
+    <div id="changeText" class="changeText">
+     <div class="inputfields">
+      <input id="Title1" type="text">
+      <input type="date" name="" id="date1">
+      <textarea type="text" id="description1"></textarea>
+      <button onclick="changeInput('${title}', '${category}')">Ändern</button>
+     </div>
+    </div>`;
+    
+    document.getElementById('Title1').value = activeTasks[index]['title'];
+    document.getElementById('date1').value = activeTasks[index]['date'];
+    document.getElementById('description1').value = activeTasks[index]['description'];
+    
+
+
+}
+
+function changeInput(title, category) {
+    var val = title;
+    var index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+
+    
+    let title1 = document.getElementById('Title1').value;
+    let date = document.getElementById('date1').value;
+    let description = document.getElementById('description1').value;
+    
+   
+
+    let task = {
+        
+        'title': title1,
+        'date': date,
+        'description': description, 
+        'category': category
+    }
+    
+       activeTasks.splice(index, 1, task);
+       backend.setItem('activeTasks', JSON.stringify(activeTasks));
+       updateHTML();
+       document.getElementById('changeText').remove();
+}
