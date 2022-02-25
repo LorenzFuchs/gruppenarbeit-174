@@ -65,6 +65,7 @@ h1 {
 .b-l-Operations {
     border-left: solid 5px #ffeb3b;
 }
+
 .ticket-img {
     border-radius: 100%;
     width: 4.3em;
@@ -82,21 +83,22 @@ h1 {
     min-width: 180px;
 }
 
-.ticket-details{
+.ticket-details {
     max-width: 35%;
     min-width: 300px;
 }
 
-.left-container{
+.left-container {
     display: flex;
-    
+
     min-width: 45%;
 
 }
 
-.d-none{
+.d-none {
     display: none;
 }
+
 #snackbar {
     visibility: hidden;
     min-width: 250px;
@@ -112,42 +114,78 @@ h1 {
     left: 50%;
     bottom: 30px;
     font-size: 19px;
-  }
-  
-  #snackbar.show {
+}
+
+#snackbar.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
-  
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+}
 
-  .ticket:hover .edit {
-    opacity: 1;
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+.ticket:hover .edit {
+    opacity: 0.8;
 }
 
 
-.edit {
+.icons {
     height: 22px;
     width: 22px;
     cursor: pointer;
     opacity: 0;
-   }
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
