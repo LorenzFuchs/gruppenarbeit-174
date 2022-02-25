@@ -60,8 +60,9 @@ function startDragging(title) {
 function generateTodoHTML(element) {
     return `
     <div class="test" draggable="true" ondragstart="startDragging('${element['title']}')">
-     <div onclick="changeTask('${element['title']}', '${element['status']}', 'openTask${element['title']}', '${element['date']}', '${element['description']}')" class="openTask" id="openTask${element['title']}">
+     <div onclick="changeTask('${element['title']}', '${element['status']}', '${element['date']}', '${element['description']}', '${element['category']}')" class="openTask" id="openTask${element['title']}">
       <div><b>${element['title']}</b></div>
+      <div>${element['category']}</div>
       <div>${element['date']}</div>
       <div><img class="me1" src="${element['Image']}"></div>
      </div>
@@ -97,7 +98,7 @@ function deleteTask(title) {
     updateHTML();
 }
 
-function changeTask(title, status, date, description) {
+function changeTask(title, status, date, description, category) {
 
     let checkIfIdExist = document.getElementById('changeText');
     if(checkIfIdExist){
@@ -114,13 +115,15 @@ function changeTask(title, status, date, description) {
     <div id="changeText" class="changeText">
      <div class="inputfields">
       <input id="Title_${title}" type="text">
+      <input id="category_${category}" type="text">
       <input type="date" name="" id="date_${date}">
       <textarea type="text" id="description_${description}"></textarea>
-      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category${category}')">Ändern</button>
      </div>
     </div>`;
     
     document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+    document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
     document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
     document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
     
@@ -135,20 +138,24 @@ function changeTask(title, status, date, description) {
         <div id="changeText" class="changeText">
          <div class="inputfields">
           <input id="Title_${title}" type="text">
+          <input id="category_${category}" type="text">
           <input type="date" name="" id="date_${date}">
           <textarea type="text" id="description_${description}"></textarea>
-          <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+          <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}')">Ändern</button>
          </div>
         </div>`;
         
         document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+        document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
         document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
         document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
     }
     
 }
 
-function changeInput(title, status, idOfTitle, idOfDate, idOfDescription) {
+function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCategory) {
+    console.log(idOfCategory);
+    console.log(idOfDescription);
     var val = title;
     var index = activeTasks.findIndex(function (item, i) {
         return item.title === val
@@ -156,6 +163,7 @@ function changeInput(title, status, idOfTitle, idOfDate, idOfDescription) {
 
     
     let title1 = document.getElementById(idOfTitle).value;
+    let category1 = document.getElementById(idOfCategory).value;
     let date = document.getElementById(idOfDate).value;
     let description = document.getElementById(idOfDescription).value;
     
@@ -165,6 +173,7 @@ function changeInput(title, status, idOfTitle, idOfDate, idOfDescription) {
         
         'title': title1,
         'date': date,
+        'category': category1,
         'description': description, 
         'status': status
     }
