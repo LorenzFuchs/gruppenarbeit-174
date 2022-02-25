@@ -3,7 +3,7 @@ async function init() {
     activeTasks = JSON.parse(backend.getItem('activeTasks')) || [];
     console.log(activeTasks);
     updateHTML();
-    
+
 }
 
 let currentDraggedElement;
@@ -101,56 +101,66 @@ function deleteTask(title) {
 function changeTask(title, status, date, description, category) {
 
     let checkIfIdExist = document.getElementById('changeText');
-    if(checkIfIdExist){
+    if (checkIfIdExist) {
         document.getElementById('changeText').remove();
-    
-    
-    var val = title;
-    var index = activeTasks.findIndex(function (item, i) {
-        return item.title === val
-    });
 
 
-    document.getElementById('wholestatusofTask').innerHTML += `
+        var val = title;
+        var index = activeTasks.findIndex(function (item, i) {
+            return item.title === val
+        });
+
+
+        document.getElementById('wholestatusofTask').innerHTML += `
     <div id="changeText" class="changeText">
      <div class="inputfields">
       <input id="Title_${title}" type="text">
-      <input id="category_${category}" type="text">
+      <select id="category_${category}">
+          <option>Marketing</option>
+          <option>Design</option>
+          <option>Sales</option>
+          <option>Operations</option>
+          </select>
       <input type="date" name="" id="date_${date}">
       <textarea type="text" id="description_${description}"></textarea>
       <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category${category}')">Ändern</button>
      </div>
     </div>`;
-    
-    document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
-    document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
-    document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
-    document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
-    
-    }else {
+
+        document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+        document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
+        document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+        document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
+
+    } else {
         var val = title;
         var index = activeTasks.findIndex(function (item, i) {
             return item.title === val
         });
-    
-    
+
+
         document.getElementById('wholestatusofTask').innerHTML += `
         <div id="changeText" class="changeText">
          <div class="inputfields">
           <input id="Title_${title}" type="text">
-          <input id="category_${category}" type="text">
+          <select id="category_${category}">
+          <option>Marketing</option>
+          <option>Design</option>
+          <option>Sales</option>
+          <option>Operations</option>
+          </select>
           <input type="date" name="" id="date_${date}">
           <textarea type="text" id="description_${description}"></textarea>
           <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}')">Ändern</button>
          </div>
         </div>`;
-        
+
         document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
         document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
         document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
         document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
     }
-    
+
 }
 
 function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCategory) {
@@ -161,25 +171,25 @@ function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCa
         return item.title === val
     });
 
-    
+
     let title1 = document.getElementById(idOfTitle).value;
     let category1 = document.getElementById(idOfCategory).value;
     let date = document.getElementById(idOfDate).value;
     let description = document.getElementById(idOfDescription).value;
-    
-   
+
+
 
     let task = {
-        
+
         'title': title1,
         'date': date,
         'category': category1,
-        'description': description, 
+        'description': description,
         'status': status
     }
-    
-       activeTasks.splice(index, 1, task);
-       backend.setItem('activeTasks', JSON.stringify(activeTasks));
-       updateHTML();
-       document.getElementById('changeText').remove();
+
+    activeTasks.splice(index, 1, task);
+    backend.setItem('activeTasks', JSON.stringify(activeTasks));
+    updateHTML();
+    document.getElementById('changeText').remove();
 }
