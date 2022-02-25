@@ -123,7 +123,7 @@ function changeTask(title, status, date, description, category) {
           </select>
       <input type="date" name="" id="date_${date}">
       <textarea type="text" id="description_${description}"></textarea>
-      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category${category}')">Ändern</button>
+      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}')">Ändern</button>
      </div>
     </div>`;
 
@@ -164,13 +164,13 @@ function changeTask(title, status, date, description, category) {
 }
 
 function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCategory) {
-    console.log(idOfCategory);
-    console.log(idOfDescription);
+    
     var val = title;
     var index = activeTasks.findIndex(function (item, i) {
         return item.title === val
     });
 
+    
 
     let title1 = document.getElementById(idOfTitle).value;
     let category1 = document.getElementById(idOfCategory).value;
@@ -187,6 +187,8 @@ function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCa
         'description': description,
         'status': status
     }
+
+    
 
     activeTasks.splice(index, 1, task);
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
