@@ -125,3 +125,15 @@ textarea {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.relative {
+    display: flex;
+    position: relative;
+}
+
+.absolut {
+    display: flex;
+    position: absolute;
+    justify-content: end;
+    margin-top: 288px;
+}

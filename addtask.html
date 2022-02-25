@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <link rel="stylesheet" href="addtask.css">
+    <link rel="stylesheet" href="backlog.css">
     <link rel="stylesheet" href="Templates/navbar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,9 @@
     <script src="insert_header.js"></script>
     <script src="./mini_backend.js"></script>
     <script src="addtask.js"></script>
-
+    
+    <script src="backlog.js"></script>
+       
 
 </head>
 
@@ -40,8 +43,8 @@
                             <select id="category" class="bgr-input" style="cursor: pointer;">
                                 <option>Marketing</option>
                                 <option>Design</option>
-                                <option>Customer Service</option>
-                                <option>Data</option>
+                                <option>Operations</option>
+                                <option>Sales</option>
                             </select>
                             <h2>DESCRIPTION</h2>
                             <textarea id="description"
@@ -72,7 +75,7 @@
 
                             <div class="row end">
                                 <button class="grey-button pointer">CANCEL</button>
-                                <button class="blue-button pointer">CREATE TASK</button>
+                                <button onclick="feedbackSnackbar()" class="blue-button pointer">CREATE TASK</button>
                             </div>
                         </div>
 
@@ -81,6 +84,7 @@
             </div>
         </div>
     </div>
+    <div id="snackbar">Task is saved in backlog</div>
     </div>
 
 </body>

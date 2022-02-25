@@ -57,23 +57,3 @@ function clearForm() {
     urgency.value = '';
     asignedto.value = '';
 }
-
-
-function chooseAsignedTo() {
-    for (let i = 0; i < profiles.length; i++) {
-        let asignedto = document.getElementById('asignedto');
-
-        asignedto.innerHTML += `
-            <div" id="asignedto">
-                <select>
-                    <option>
-                    ${profiles[i]['name']} 
-                    ${profiles[i]['category']} 
-                    ${profiles[i]['e-mail']}
-                    </option>
-                </select>
-            </div>
-        `;
-    }
-}
-
