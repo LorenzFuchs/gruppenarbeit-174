@@ -9,7 +9,7 @@ async function init() {
 let currentDraggedElement;
 
 function updateHTML() {
-    let todo = activeTasks.filter(t => t['category'] == 'toDo');
+    let todo = activeTasks.filter(t => t['status'] == 'toDo');
 
     document.getElementById('toDo').innerHTML = '';
 
@@ -18,7 +18,7 @@ function updateHTML() {
         document.getElementById('toDo').innerHTML += generateTodoHTML(element);
     }
 
-    let inprogress = activeTasks.filter(t => t['category'] == 'inProgress');
+    let inprogress = activeTasks.filter(t => t['status'] == 'inProgress');
 
     document.getElementById('inProgress').innerHTML = '';
 
@@ -27,7 +27,7 @@ function updateHTML() {
         document.getElementById('inProgress').innerHTML += generateTodoHTML(element);
     }
 
-    let testing = activeTasks.filter(t => t['category'] == 'testing');
+    let testing = activeTasks.filter(t => t['status'] == 'testing');
 
     document.getElementById('testing').innerHTML = '';
 
@@ -36,7 +36,7 @@ function updateHTML() {
         document.getElementById('testing').innerHTML += generateTodoHTML(element);
     }
 
-    let done = activeTasks.filter(t => t['category'] == 'done');
+    let done = activeTasks.filter(t => t['status'] == 'done');
 
     document.getElementById('done').innerHTML = '';
 
@@ -60,7 +60,7 @@ function startDragging(title) {
 function generateTodoHTML(element) {
     return `
     <div draggable="true" ondragstart="startDragging('${element['title']}')">
-     <div onclick="changeTask('${element['title']}', '${element['category']}', 'openTask${element['title']}', '${element['date']}', '${element['description']}')" class="openTask" id="openTask${element['title']}">
+     <div onclick="changeTask('${element['title']}', '${element['status']}', 'openTask${element['title']}', '${element['date']}', '${element['description']}')" class="openTask" id="openTask${element['title']}">
       <div><b>${element['title']}</b></div>
       <div>${element['date']}</div>
       <div><img class="me1" src="${element['Image']}"></div>
@@ -73,9 +73,10 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    activeTasks[currentDraggedElement]['category'] = category;
+function moveTo(status) {
+    activeTasks[currentDraggedElement]['status'] = status;
     updateHTML();
+    backend.setItem('activeTasks', JSON.stringify(activeTasks));
 }
 
 function highlight(id) {
@@ -96,7 +97,7 @@ function deleteTask(title) {
     updateHTML();
 }
 
-function changeTask(title, category, date, description) {
+function changeTask(title, status, date, description) {
 
     let checkIfIdExist = document.getElementById('changeText');
     if(checkIfIdExist){
@@ -115,7 +116,7 @@ function changeTask(title, category, date, description) {
       <input id="Title_${title}" type="text">
       <input type="date" name="" id="date_${date}">
       <textarea type="text" id="description_${description}"></textarea>
-      <button onclick="changeInput('${title}', '${category}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
      </div>
     </div>`;
     
@@ -136,7 +137,7 @@ function changeTask(title, category, date, description) {
           <input id="Title_${title}" type="text">
           <input type="date" name="" id="date_${date}">
           <textarea type="text" id="description_${description}"></textarea>
-          <button onclick="changeInput('${title}', '${category}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
+          <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}')">Ändern</button>
          </div>
         </div>`;
         
@@ -147,7 +148,7 @@ function changeTask(title, category, date, description) {
     
 }
 
-function changeInput(title, category, idOfTitle, idOfDate, idOfDescription) {
+function changeInput(title, status, idOfTitle, idOfDate, idOfDescription) {
     var val = title;
     var index = activeTasks.findIndex(function (item, i) {
         return item.title === val
@@ -165,7 +166,7 @@ function changeInput(title, category, idOfTitle, idOfDate, idOfDescription) {
         'title': title1,
         'date': date,
         'description': description, 
-        'category': category
+        'status': status
     }
     
        activeTasks.splice(index, 1, task);
