@@ -21,7 +21,7 @@ function AddTicket() {
     <div class="left-container">
     <img src="${task['profil']}" class="ticket-img">
     <div contentEditable="true"class="name-mail">
-        <p id="name${i}" contentEditable="true">Gus K. Medina</p>
+        <p id="name${i}" contentEditable="true">${task['asignedto']}</p>
         <a id="mail${i}" contentEditable="true" href="#">gusmedina@gmail.com</a>
     </div>
 </div>

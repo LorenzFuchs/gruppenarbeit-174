@@ -17,9 +17,8 @@
     <script src="insert_header.js"></script>
     <script src="./mini_backend.js"></script>
     <script src="addtask.js"></script>
-    
     <script src="backlog.js"></script>
-       
+
 
 </head>
 
@@ -52,7 +51,7 @@
                                 id="" cols="30" rows="7"></textarea>
                         </div>
 
-                        <div DUEDATE-COLUMN class="column1">
+                        <div DUEDATE-COLUMN class="column1 relative">
                             <h2>DUE DATE</h2>
                             <input id="date" class="bgr-input pointer" type="date">
                             <h2>URGENCY</h2>
@@ -65,17 +64,23 @@
 
 
                             <h2>ASIGNED TO</h2>
-                            <div class="row start">
-                                <button onclick="chooseAsignedTo()" class="plus-button"> <img class="pointer small-img plus-image" src="img/icon plus.png" alt=""> </button>
-                                <div id="asignedto"></div>
+                            <div>
+                                <div>
+                                    <select style="width: 100%;" id="asignedto" class="bgr-input">
+                                        <option>Gus K. Medina</option>
+                                        <option>Angie P Davi</option>
+                                        <option>Anthony S Sullivan</option>
+                                        <option>Jeffrey F Doyle</option>
+                                    </select>
+                                </div>
                             </div>
 
 
 
 
-                            <div class="row end">
+                            <div class="row end absolut">
                                 <button class="grey-button pointer">CANCEL</button>
-                                <button onclick="feedbackSnackbar()" class="blue-button pointer">CREATE TASK</button>
+                                <button class="blue-button pointer">CREATE TASK</button>
                             </div>
                         </div>
 
