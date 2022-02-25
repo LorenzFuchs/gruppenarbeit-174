@@ -139,3 +139,15 @@ h1 {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
   }
+
+  .ticket:hover .edit {
+    display: block;
+}
+
+
+.edit {
+    height: 22px;
+    width: 22px;
+    cursor: pointer;
+    display: none;
+   }

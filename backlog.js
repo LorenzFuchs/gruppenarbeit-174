@@ -29,6 +29,7 @@ function AddTicket() {
     <div class="ticket-details">
         <p>${task['description']} </p>
     </div>
+    <img class="edit" src="img/pen.png" alt="pen">
 </div>`
 ;
 }
