@@ -59,7 +59,7 @@ function startDragging(title) {
 
 function generateTodoHTML(element) {
     return `
-    <div draggable="true" ondragstart="startDragging('${element['title']}')">
+    <div class="test" draggable="true" ondragstart="startDragging('${element['title']}')">
      <div onclick="changeTask('${element['title']}', '${element['status']}', 'openTask${element['title']}', '${element['date']}', '${element['description']}')" class="openTask" id="openTask${element['title']}">
       <div><b>${element['title']}</b></div>
       <div>${element['date']}</div>

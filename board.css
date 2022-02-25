@@ -67,17 +67,25 @@ span {
     border: 2px solid blue;
 }
 
+.test:hover .trash {
+    display: block;
+}
+
+
+
 .trash {
     height: 20px;
     width: 20px;
     bottom: 10px;
     right: 5px;
     cursor: pointer;
+    display: none;
+    margin-top: 5px;
 }
 
 .deletediv {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .changeText {
@@ -86,7 +94,7 @@ span {
     left: 630px;
     height: 500px;
     width: 500px;
-    background-color: lightcoral;
+    background-color: #8e7eff;
     border-radius: 20px;
     
 
