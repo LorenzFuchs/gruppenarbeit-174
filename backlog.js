@@ -30,9 +30,9 @@ function AddTicket() {
         <p id="description${i}" contentEditable="true">${task['description']} </p>
     </div>
     <div class="column">
-    <img onclick="editable('${i}')" class="edit" src="img/pen.png" alt="pen">
-    <img onclick="activeTask('${i}')" class="edit" src="img/lunch.png">
-    <img onclick="saveTask('${i}')" class="edit" src="img/save.png">
+    <img onclick="editable('${i}')" class="icons" src="img/pen.png" alt="pen">
+    <img onclick="activeTask('${i}')" class="icons" src="img/lunch.png">
+    <img onclick="saveTask('${i}')" class="icons" src="img/save.png">
     </div>
 </div>`
             ;
