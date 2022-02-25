@@ -11,7 +11,7 @@ async function init() {
 }
  
 function AddTicket() {
-   document.getElementById('ticket-wrapper').innerHTML = ``; 
+    document.getElementById('ticket-wrapper').innerHTML = ``; 
    
     for (let i = 0; i < allTasks.length; i++) {
         task = allTasks[i];
@@ -42,7 +42,7 @@ function activeTask(i){             //function to pass on JSON and remove from b
         "date": allTasks[i]['date'],
         "urgency": allTasks[i]['urgency'],
         "profil": allTasks[i]['profil'],
-        "status": 'toDo'
+        'status': 'toDo'
     };
     activeTasks.push(activeTask);
     console.log(activeTasks);
@@ -52,9 +52,20 @@ function activeTask(i){             //function to pass on JSON and remove from b
 }
 
 function removeTask(i) {
+    feedbackSnackbar();
     var j = "id" + i;
    var element = document.getElementById(j);
    element.classList.add("d-none");
    allTasks.splice(i, 1);
    backend.setItem('tasks', JSON.stringify(allTasks)); 
 }
+
+
+
+
+function feedbackSnackbar() {       // w3 Snackbar / Toast
+  var toast = document.getElementById("snackbar");
+  toast.className = "show";
+  setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2000);
+}
+
