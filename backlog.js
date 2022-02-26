@@ -96,52 +96,14 @@ function editTask(i) {
 
     }
     console.log(task);
+    debugger;
     allTasks.splice(i, 1, task);
-    backend.setItem('allTasks', JSON.stringify(allTasks));
+    backend.setItem('tasks', JSON.stringify(allTasks));
     AddTicket();
 
 }
 
 /*
-"title": allTasks[i]['title'],
-"category": allTasks[i]['category'],
-"description": allTasks[i]['description'],
-"date": allTasks[i]['date'],
-"urgency": allTasks[i]['urgency'],
-"profil": allTasks[i]['profil'],
-'status': 'toDo'
-
-let title = document.getElementById('title');
-    let category = document.getElementById('category');
-    let description = document.getElementById('description');
-    let date = document.getElementById('date');
-    let urgency = document.getElementById('urgency');
-    let asignedto = document.getElementById('asignedto');
-
-function saveTask(i){
-    allTasks[i]==
-    "title": allTasks[i]['title'],
-    "category": document.getElementById('category(i)'),
-    "description": allTasks[i]['description'],
-    "date": allTasks[i]['date'],
-    "urgency": allTasks[i]['urgency'],
-allTasks[i]
-}
-
-<p id="name${i}" contentEditable="true">Gus K. Medina</p>
-<a id="mail${i}" contentEditable="true" href="#">gusmedina@gmail.com</a>
-</div>
-</div>
-<div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>
-<div class="ticket-details">
-<p id="description${i}" contentEditable="true">${task['description']} </p>
-</div>
-<div class="column">
-<img onclick="editable('${i}')" class="edit" src="img/pen.png" alt="pen">
-<img onclick="activeTask('${i}')" class="edit" src="img/lunch.png">
-<img onclick="saveTask('${i}')" class="edit" src="img/save.png"> 
-
-
 // Get text content
 var text = elem.textContent;
 */
