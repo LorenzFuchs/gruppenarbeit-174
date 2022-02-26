@@ -58,7 +58,7 @@ function activeTask(i) {             //function to pass on JSON and remove from 
 }
 
 function removeTask(i) {
-    feedbackSnackbar();
+    feedbackSnackbar(0);
     let j = "id" + i;
     let element = document.getElementById(j);
     element.classList.add("d-none");
@@ -70,20 +70,20 @@ function removeTask(i) {
 
 
 function feedbackSnackbar() {       // w3 Snackbar / Toast
-    var toast = document.getElementById("snackbar");
+    let toast = document.getElementById(`snackbar`);
     toast.className = "show";
     setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 2000);
 }
 
 
-function editTask(i) {
+function editTask(i) {              // save after edit
     let title = allTasks[i]['title'];
     let category = document.getElementById(`category${i}`).innerHTML;
     let description = document.getElementById(`description${i}`).innerHTML;
     let date = allTasks[i]['date'];
     let urgency = allTasks[i]['urgency'];
     let asignedto = document.getElementById(`name${i}`).innerHTML;
-    console.log(category, description, date, urgency, asignedto);
+   
 
     let task = {
 
@@ -95,12 +95,11 @@ function editTask(i) {
         'asignedto': asignedto
 
     }
-    console.log(task);
-    debugger;
+   
     allTasks.splice(i, 1, task);
-    backend.setItem('tasks', JSON.stringify(allTasks));
+    backend.setItem('tasks', JSON.stringify(allTasks));     
     AddTicket();
-
+    
 }
 
 /*
