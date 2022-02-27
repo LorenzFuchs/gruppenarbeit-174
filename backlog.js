@@ -58,14 +58,12 @@ function activeTask(i) {             //function to pass on JSON and remove from 
 }
 
 function removeTask(i) {
-    feedbackSnackbar(0);
-    let j = "id" + i;
-    let element = document.getElementById(j);
+    feedbackSnackbar();
+    let element = document.getElementById(`id${i}`);
     element.classList.add("d-none");
     allTasks.splice(i, 1);
     backend.setItem('tasks', JSON.stringify(allTasks));
 }
-
 
 
 
