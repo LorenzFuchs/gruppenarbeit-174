@@ -1,4 +1,11 @@
 let tasks = [];
+
+async function init1() {
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
+}
+
+
 let profiles = [{
     "name": "Gus K. Medina",
     "category": "Marketing",
