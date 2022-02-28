@@ -137,3 +137,7 @@ textarea {
     justify-content: end;
     margin-top: 288px;
 }
+
+#addtask-container{
+    margin-left: 170px;
+}
