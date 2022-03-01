@@ -19,10 +19,10 @@ function AddTicket() {          // display allTask in backlogHTML
         document.getElementById('ticket-wrapper').innerHTML += `
     <div id="id${task['title']}" contentEditable="true"  class="ticket b-l-${task['category']}">
     <div class="left-container">
-    <img src="${task['profil']}" class="ticket-img">
+    <img src="${task['profil'][0]['picture']}" class="ticket-img">
     <div contentEditable="true"class="name-mail">
-        <p id="name${i}" contentEditable="true">${task['asignedto']}</p>
-        <a id="mail${i}" contentEditable="true" href="#">gusmedina@gmail.com</a>
+        <p id="name${i}" contentEditable="true">${task['profil'][0]['Name']}</p>
+        <a id="mail${i}" contentEditable="true" href="#">${task['profil'][0]['Mail']}</a>
     </div>
 </div>
     <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>

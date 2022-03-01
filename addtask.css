@@ -5,6 +5,7 @@
 .column {
     display: flex;
     flex-direction: column;
+    width: 800px;
 }
 
 .column1 {
@@ -44,10 +45,6 @@ h3 {
 
 }
 
-.bgr-input {
-    height: 30px;
-    padding: 0;
-}
 
 textarea {
     border-radius: 5px;
@@ -133,11 +130,122 @@ textarea {
 
 .absolut {
     display: flex;
-    position: absolute;
     justify-content: end;
-    margin-top: 288px;
+    
 }
 
 #addtask-container{
     margin-left: 170px;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: left;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin-left: 60px;
+    height: 54px;
+    align-items: center;
+    border-radius: 21px;
+    padding: 10px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropbtn {
+
+    background-image: url(img/icon\ plus.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 16px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background-color: #d8d8d8;
+}
+
+.dropbtn:hover {
+    opacity: 0.5;
+}
+
+.show {
+    display: flex;
+}
+
+#images {
+    display: flex;
+}
+
+.setImages{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.me1 {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 2px solid lightgray;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    font-family: 'PT Sans', sans-serif;
+    height: 70px;
+    width: 300px;
+}
+
+textarea{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    font-family: 'PT Sans', sans-serif;
+    width: 300px;
+}
+
+select{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    font-family: 'PT Sans', sans-serif;
+    height: 70px;
+    width: 300px;
+}
+

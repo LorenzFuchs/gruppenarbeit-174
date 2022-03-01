@@ -64,30 +64,34 @@
 
 
                             <h2>ASIGNED TO</h2>
-                            <div>
-                                <div>
-                                    <select required style="width: 100%;" id="asignedto" class="bgr-input">
-                                        <option>Gus K. Medina</option>
-                                        <option>Angie P Davi</option>
-                                        <option>Anthony S Sullivan</option>
-                                        <option>Jeffrey F Doyle</option>
-                                    </select>
+                            <div class="setImages">
+                                <div id="images"></div>
+                                <div id="dropdown" class="dropdown">
+                                    <button type="button" onclick="myFunction()" class="dropbtn"></button>
+                                    <div id="myDropdown" class="dropdown-content">
+                                        <img onclick="showImage('Gus K. Medina', 'gusmedina@gmail.com', '/img/profil/profil1.jpg')"
+                                            class="me" src="/img/profil/profil1.jpg">
+                                        <img onclick="showImage('Angi P Davi', 'angi@gmail.com','/img/profil/profil2.jpg')"
+                                            class="me" src="/img/profil/profil2.jpg">
+                                        <img onclick="showImage('Anthony S Sullivan', 'anthony@gmail.com', '/img/profil/profil3.jpg')"
+                                            class="me" src="/img/profil/profil3.jpg">
+                                        <img onclick="showImage('Jeffrey F Doyle', 'jeffrey@gmail.com', '/img/profil/profil4.jpg')"
+                                            class="me" src="/img/profil/profil4.jpg">
+                                    </div>
                                 </div>
                             </div>
 
-
-
-
                             <div class="row end absolut">
-                                <button class="grey-button pointer">CANCEL</button>
-                                <button onclick="feedbackSnackbar()" class="blue-button pointer">CREATE TASK</button>
+                                <button onclick="clearForm()" type="button" class="grey-button pointer">CANCEL</button>
+                                <button class="blue-button pointer">CREATE TASK</button>
                             </div>
                         </div>
-
-                    </form>
                 </div>
+
+                </form>
             </div>
         </div>
+    </div>
     </div>
     <div id="snackbar">Task is saved in backlog</div>
     </div>
