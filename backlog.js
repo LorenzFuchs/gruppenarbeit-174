@@ -12,15 +12,14 @@ async function init() {         // download files from server
 
 function AddTicket() {          // display allTask in backlogHTML
     document.getElementById('ticket-wrapper').innerHTML = ``;
-
-    for (let i = 0; i < allTasks.length; i++) {
+        for (let i = 0; i < allTasks.length; i++) {
         task = allTasks[i];
         
         document.getElementById('ticket-wrapper').innerHTML += `
-    <div id="id${task['title']}" contentEditable="true"  class="ticket b-l-${task['category']}">
+    <div id="id${task['title']}"   class="ticket b-l-${task['category']}">
     <div class="left-container">
     <img src="${task['profil'][0]['picture']}" class="ticket-img">
-    <div contentEditable="true"class="name-mail">
+    <div class="name-mail">
         <p id="name${i}" contentEditable="true">${task['profil'][0]['Name']}</p>
         <a id="mail${i}" contentEditable="true" href="#">${task['profil'][0]['Mail']}</a>
     </div>
@@ -32,13 +31,13 @@ function AddTicket() {          // display allTask in backlogHTML
     <div class="column">
     <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">
     <img onclick="activeTask('${task['title']}','${task['description']}', '${task['asignedto']}', '${task['category']}', '${task['date']}', '${task['urgency']}')" class="icons" src="img/lunch.png">
-    <img onclick="saveTask('${i}')" class="icons" src="img/save.png">
+    <img onclick="deleteTask('${i}')" class="icons" src="img/save.png">
     </div>
 </div>`
             ;
     }
 }
-
+//allTasks[0]['profil'].length > 1
 
 
 function activeTask(title, description, asignedto, category, date, urgency) {             //function to pass on JSON and remove from backlog
@@ -81,8 +80,13 @@ function editTask(i) {              // save after edit
     let description = document.getElementById(`description${i}`).innerHTML;
     let date = allTasks[i]['date'];
     let urgency = allTasks[i]['urgency'];
-    let asignedto = document.getElementById(`name${i}`).innerHTML;
-   
+    
+    let profil = [
+        allTasks[i]['profil'][0]['Name'],
+        allTasks[i]['profil'][0]['Mail'],
+        allTasks[i]['profil'][0]['picture'] 
+    ];
+    // ["allTasks[i]['profil'][0]['Name']", "allTasks[i]['profil'][0]['Mail']", "allTasks[i]['profil'][0]['picture']"]
 
     let task = {
 
@@ -91,7 +95,7 @@ function editTask(i) {              // save after edit
         'description': description,
         'date': date,
         'urgency': urgency,
-        'asignedto': asignedto
+        "profil": profil
 
     }
    
@@ -101,8 +105,19 @@ function editTask(i) {              // save after edit
     
 }
 
+function deleteTask(i) {
+  
+    allTasks.splice(i, 1, task);
+    backend.setItem('tasks', JSON.stringify(allTasks));     
+    AddTicket();
+}
 /*
-// Get text content
+
+
+
+
+
+
 var text = elem.textContent;
 */
 //onclick= onblur="activeTask('${i}')" onblur="myFunction() onblur="activeTask('${i}')"

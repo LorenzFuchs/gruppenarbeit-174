@@ -10,6 +10,11 @@ async function init1() {
 
 
 
+  async function deleteUser() {
+    
+    tasks = backend.setItem(backend.deleteItem('task'));
+    await downloadFromServer();
+}
 /**
  * This function is used to put data into a JSON. And to connect with backend.
  */
