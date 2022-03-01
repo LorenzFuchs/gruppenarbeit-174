@@ -1,0 +1,24 @@
+h1 {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+}
+
+h2 {
+    color: #1e3190;
+    font-size: large;
+}
+
+h3 {
+    color: #1e3190;
+    font-size: medium;
+    margin-block-start: 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.left {
+    margin-left: 12px;
+}

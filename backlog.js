@@ -2,7 +2,7 @@ let allTasks = [];
 let activeTasks = [];
 
 
-async function init() {
+async function init() {         // download files from server
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('tasks')) || [];
     activeTasks = JSON.parse(backend.getItem('activeTasks')) || [];
@@ -10,7 +10,7 @@ async function init() {
     AddTicket();
 }
 
-function AddTicket() {
+function AddTicket() {          // display allTask in backlogHTML
     document.getElementById('ticket-wrapper').innerHTML = ``;
 
     for (let i = 0; i < allTasks.length; i++) {
@@ -66,8 +66,7 @@ function removeTask(i) {
 }
 
 
-
-function feedbackSnackbar() {       // w3 Snackbar / Toast
+function feedbackSnackbar() {       // w3 Snackbar / Toast - visual confirmation on action
     let toast = document.getElementById(`snackbar`);
     toast.className = "show";
     setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 2000);
