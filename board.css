@@ -27,6 +27,7 @@ span {
     display: flex;
     height: 100%;
     margin-top: 50px;
+    margin-left: 150px;
     
 }
 
@@ -41,12 +42,7 @@ span {
     padding-bottom: 20px;
 }
 
-.openTask {
-    height: 100px;
-    width: 60px;
-    background-color: lightcoral;
-    margin-top: 20px;
-}
+
 
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.2);

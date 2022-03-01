@@ -1,0 +1,143 @@
+.d-none {
+    display: none;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.column1 {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+h1 {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+}
+
+h2 {
+    color: #1e3190;
+    font-size: large;
+}
+
+h3 {
+    color: #1e3190;
+    font-size: medium;
+    margin-block-start: 0;
+}
+
+.bgr-addtask {
+    background-color: aliceblue;
+    border-radius: 25px;
+    padding: 20px;
+    width: 100%;
+
+}
+
+.bgr-input {
+    height: 30px;
+    padding: 0;
+}
+
+textarea {
+    border-radius: 5px;
+    resize: none;
+}
+
+.profil-img {
+    border-radius: 100%;
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+}
+
+.plus-button {
+    border-radius: 100%;
+    border: none;
+    background-color: aliceblue;
+}
+
+.plus-image:hover {
+    opacity: 0.75;
+}
+
+.grey-button {
+    background-color: aliceblue;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+
+}
+
+.grey-button:hover {
+    background-color: rgb(209, 233, 255);
+
+}
+
+.blue-button {
+    background-color: #1e3190;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.blue-button:hover {
+    background-color: #1e3190e0;
+}
+
+.start {
+    display: flex;
+    justify-content: start;
+
+}
+
+.end {
+    justify-content: end;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.space {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.left {
+    margin-left: 12px;
+}
+
+.asignedto {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.relative {
+    display: flex;
+    position: relative;
+}
+
+.absolut {
+    display: flex;
+    position: absolute;
+    justify-content: end;
+    margin-top: 288px;
+}
+
+#addtask-container{
+    margin-left: 170px;
+}

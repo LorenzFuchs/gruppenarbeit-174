@@ -39,6 +39,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: fixed;
     
   
 }
@@ -77,3 +78,4 @@ span {
 .w3_navbar_height {
     height: 100%;
 }
+

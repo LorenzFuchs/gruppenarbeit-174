@@ -17,7 +17,7 @@ function AddTicket() {          // display allTask in backlogHTML
         task = allTasks[i];
         
         document.getElementById('ticket-wrapper').innerHTML += `
-    <div id="id${i}" contentEditable="true"  class="ticket b-l-${task['category']}">
+    <div id="id${task['title']}" contentEditable="true"  class="ticket b-l-${task['category']}">
     <div class="left-container">
     <img src="${task['profil']}" class="ticket-img">
     <div contentEditable="true"class="name-mail">
@@ -31,7 +31,7 @@ function AddTicket() {          // display allTask in backlogHTML
     </div>
     <div class="column">
     <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">
-    <img onclick="activeTask('${i}')" class="icons" src="img/lunch.png">
+    <img onclick="activeTask('${task['title']}','${task['description']}', '${task['asignedto']}', '${task['category']}', '${task['date']}', '${task['urgency']}')" class="icons" src="img/lunch.png">
     <img onclick="saveTask('${i}')" class="icons" src="img/save.png">
     </div>
 </div>`
@@ -41,27 +41,29 @@ function AddTicket() {          // display allTask in backlogHTML
 
 
 
-function activeTask(i) {             //function to pass on JSON and remove from backlog
+function activeTask(title, description, asignedto, category, date, urgency) {             //function to pass on JSON and remove from backlog
     let activeTask = {
-        "title": allTasks[i]['title'],
-        "category": allTasks[i]['category'],
-        "description": allTasks[i]['description'],
-        "date": allTasks[i]['date'],
-        "urgency": allTasks[i]['urgency'],
-        "profil": allTasks[i]['profil'],
+        "title": title,
+        "category": category,
+        "description": description,
+        "date": date,
+        "urgency": urgency,
+        "profil": asignedto,
         'status': 'toDo'
     };
     activeTasks.push(activeTask);
     console.log(activeTasks);
-    removeTask(i);
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
+    removeTask(title);
+    
 }
 
-function removeTask(i) {
+function removeTask(title) {
     feedbackSnackbar();
-    let element = document.getElementById(`id${i}`);
+    let element = document.getElementById(`id${title}`);
     element.classList.add("d-none");
-    allTasks.splice(i, 1);
+    let a = allTasks;
+    a.splice(a.findIndex(e => e.title === title), 1);
     backend.setItem('tasks', JSON.stringify(allTasks));
 }
 

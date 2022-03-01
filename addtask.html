@@ -22,7 +22,7 @@
 
 </head>
 
-<body onload="includeHTML()">
+<body onload="includeHTML(), init1()">
     <div class="row">
         <div w3-include-html="Templates/navbar.html"></div>
         <div ADDTASK id="addtask-container">
@@ -37,25 +37,25 @@
                     <form class="row space" onsubmit="createTask()">
                         <div TITLE-COLUMN class="column1">
                             <h2>TITLE</h2>
-                            <input id="title" class="bgr-input" type="text" placeholder="type the title">
+                            <input required id="title" class="bgr-input" type="text" placeholder="type the title">
                             <h2>CATEGORY</h2>
-                            <select id="category" class="bgr-input" style="cursor: pointer;">
+                            <select required id="category" class="bgr-input" style="cursor: pointer;">
                                 <option>Marketing</option>
                                 <option>Design</option>
                                 <option>Operations</option>
                                 <option>Sales</option>
                             </select>
                             <h2>DESCRIPTION</h2>
-                            <textarea id="description"
+                            <textarea required id="description"
                                 placeholder="Lorem ipsum dolor sit amet. Aut voluptatibus galisum ut aperiam repellat vel error."
                                 id="" cols="30" rows="7"></textarea>
                         </div>
 
                         <div DUEDATE-COLUMN class="column1 relative">
                             <h2>DUE DATE</h2>
-                            <input id="date" class="bgr-input pointer" type="date">
+                            <input required id="date" class="bgr-input pointer" type="date">
                             <h2>URGENCY</h2>
-                            <select id="urgency" class="bgr-input pointer">
+                            <select required id="urgency" class="bgr-input pointer">
                                 <option>High</option>
                                 <option>Middle</option>
                                 <option>Low</option>
@@ -66,7 +66,7 @@
                             <h2>ASIGNED TO</h2>
                             <div>
                                 <div>
-                                    <select style="width: 100%;" id="asignedto" class="bgr-input">
+                                    <select required style="width: 100%;" id="asignedto" class="bgr-input">
                                         <option>Gus K. Medina</option>
                                         <option>Angie P Davi</option>
                                         <option>Anthony S Sullivan</option>
