@@ -41,7 +41,7 @@ function AddTicket() {          // display allTask in backlogHTML
             for (let j = 0; j < allTasks[i]['profil'].length; j++) {
                 let multiProfil = allTasks[i]['profil'][j];
                 document.getElementById('ticket-wrapper').innerHTML += `
-                <div id="id${task['title']}"   class="ticket b-l-${task['category']}">
+                <div id="id${task['title']}"   class="multiProfil ticket b-l-${task['category']}">
                 <div class="left-container">
                 <img src="${ multiProfil['picture']}" class="ticket-img">
                 <div class="name-mail">
@@ -83,6 +83,7 @@ function activeTask(title, description, category, date, urgency, picture, Name, 
     console.log(activeTasks);
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
     removeTask(title);
+    multiProfilRemove();
 
 }
 
@@ -140,6 +141,15 @@ function deleteTask(i) {
     backend.setItem('tasks', JSON.stringify(allTasks));
     AddTicket();
 }
+
+function multiProfilRemove(){
+    let elems = document.getElementsByClassName('multiProfil');
+for (let i=0;i<elems.length;i+=1){
+  elems[i].style.display = 'none';
+}
+       
+}
+
 /*
 
 

@@ -193,3 +193,7 @@ h1 {
 .header-margin {
     margin-left: 170px;
 }
+
+.multiProfil{
+    display: flex;
+}
