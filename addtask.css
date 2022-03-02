@@ -73,6 +73,8 @@ textarea {
     border: none;
     padding: 12px;
     border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 
 }
 
@@ -87,6 +89,8 @@ textarea {
     border: none;
     border-radius: 10px;
     padding: 12px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .blue-button:hover {
@@ -184,6 +188,7 @@ textarea {
     height: 50px;
     width: 50px;
     background-color: #d8d8d8;
+    margin-left: 5px;
 }
 
 .dropbtn:hover {
@@ -228,6 +233,7 @@ input {
     font-family: 'PT Sans', sans-serif;
     height: 70px;
     width: 300px;
+    font-size: 20px;
 }
 
 textarea{
@@ -237,6 +243,8 @@ textarea{
     border: 1px solid lightgray;
     font-family: 'PT Sans', sans-serif;
     width: 300px;
+    font-size: 20px;
+    height: 130px;
 }
 
 select{
@@ -247,5 +255,21 @@ select{
     font-family: 'PT Sans', sans-serif;
     height: 70px;
     width: 300px;
+    font-size: 20px;
 }
 
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(img/icons8-calendar-150.png) no-repeat;
+    background-position: center;
+    background-size: 30px;
+    background-position-x: center;
+    padding-right: 10px;
+    width: 25px;
+    height: 25px;
+    border-width: thin;
+    cursor: pointer;
+}

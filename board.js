@@ -60,11 +60,11 @@ function startDragging(title) {
 function generateTodoHTML(element) {
     return `
     <div class="test" draggable="true" ondragstart="startDragging('${element['title']}')">
-     <div onclick="changeTask('${element['title']}', '${element['status']}', '${element['date']}', '${element['description']}', '${element['category']}')" class="openTask" id="openTask${element['title']}">
+     <div onclick="changeTask('${element['title']}', '${element['status']}', '${element['date']}', '${element['description']}', '${element['category']}', '${element['profil'][0]}', '${element['profil'][1]}', '${element['profil'][2]}')" class="openTask" id="openTask${element['title']}">
       <div><b>${element['title']}</b></div>
       <div>${element['category']}</div>
       <div>${element['date']}</div>
-      <div><img class="me1" src="${element['Image']}"></div>
+      <div><img class="me1" src="${element['profil'][0]}"></div>
      </div>
      <div class="deletediv"><img onclick="deleteTask('${element['title']}')" class="trash" src="img/trash.png"></div>
      </div>`;
@@ -98,7 +98,7 @@ function deleteTask(title) {
     updateHTML();
 }
 
-function changeTask(title, status, date, description, category) {
+function changeTask(title, status, date, description, category, picture, name, mail) {
 
     let checkIfIdExist = document.getElementById('changeText');
     if (checkIfIdExist) {
@@ -123,7 +123,7 @@ function changeTask(title, status, date, description, category) {
           </select>
       <input type="date" name="" id="date_${date}">
       <textarea type="text" id="description_${description}"></textarea>
-      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}')">Ändern</button>
+      <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}', '${picture}', '${name}', '${mail}')">Ändern</button>
      </div>
     </div>`;
 
@@ -151,7 +151,7 @@ function changeTask(title, status, date, description, category) {
           </select>
           <input type="date" name="" id="date_${date}">
           <textarea type="text" id="description_${description}"></textarea>
-          <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}')">Ändern</button>
+          <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}', '${picture}', '${name}', '${mail}')">Ändern</button>
          </div>
         </div>`;
 
@@ -163,7 +163,7 @@ function changeTask(title, status, date, description, category) {
 
 }
 
-function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCategory) {
+function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCategory, picture, name, mail) {
     
     var val = title;
     var index = activeTasks.findIndex(function (item, i) {
@@ -185,7 +185,8 @@ function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCa
         'date': date,
         'category': category1,
         'description': description,
-        'status': status
+        'status': status,
+        'profil': [picture, name, mail],
     }
 
     
