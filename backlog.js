@@ -16,7 +16,7 @@ function AddTicket() {          // display allTask in backlogHTML
     for (let i = 0; i < allTasks.length; i++) {
         task = allTasks[i];
         profil = allTasks[i]['profil'][0];
-        if (allTasks[i]['profil'].length < 2) {
+        if (allTasks[i]['profil'].length < 2) {     // if there is only one profil added to the task
             document.getElementById('ticket-wrapper').innerHTML += `
             <div id="id${task['title']}"   class="ticket b-l-${task['category']}">
             <div class="left-container">
@@ -31,22 +31,22 @@ function AddTicket() {          // display allTask in backlogHTML
                 <p id="description${i}" contentEditable="true">${task['description']} </p>
             </div>
             <div class="column">
-            <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">                                                                  
+            <img onclick="editTask('${task['title']}')" class="icons" src="img/save.png" alt="pen">                                                                  
             <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${profil['picture']}', '${profil['Name']}', '${profil['Mail']}' )" class="icons" src="img/lunch.png">
-            <img onclick="deleteTask('${i}')" class="icons" src="img/save.png">
+            <img onclick="removeTask('${task['title']}')" class="icons" src="img/trash.png">
             </div>
         </div>`
                 ;
-        } else {
+        } else {                                                        //if there are multiple profiles added to the task
             for (let j = 0; j < allTasks[i]['profil'].length; j++) {
                 let multiProfil = allTasks[i]['profil'][j];
                 document.getElementById('ticket-wrapper').innerHTML += `
                 <div id="id${task['title']}"   class="multiProfil ticket b-l-${task['category']}">
                 <div class="left-container">
-                <img src="${ multiProfil['picture']}" class="ticket-img">
+                <img src="${multiProfil['picture']}" class="ticket-img">
                 <div class="name-mail">
-                    <p id="name${i}" contentEditable="true">${ multiProfil['Name']}</p>
-                    <a id="mail${i}" contentEditable="true" href="#">${ multiProfil['Mail']}</a>
+                    <p id="name${i}" contentEditable="true">${multiProfil['Name']}</p>
+                    <a id="mail${i}" contentEditable="true" href="#">${multiProfil['Mail']}</a>
                 </div>
             </div>
                 <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>
@@ -54,9 +54,9 @@ function AddTicket() {          // display allTask in backlogHTML
                     <p id="description${i}" contentEditable="true">${task['description']} </p>
                 </div>
                 <div class="column">
-                <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">                                                                  
-                <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${ multiProfil['picture']}', '${ multiProfil['Name']}', '${ multiProfil['Mail']}' )" class="icons" src="img/lunch.png">
-                <img onclick="deleteTask('${i}')" class="icons" src="img/save.png">
+                <img onclick="editTask('${task['title']}')" class="icons" src="img/save.png">                                                                  
+                <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${multiProfil['picture']}', '${multiProfil['Name']}', '${multiProfil['Mail']}' )" class="icons" src="img/lunch.png">
+                <img onclick="removeTask('${task['title']}')" class="icons" src="img/trash.png">
                 </div>
             </div>`
 
@@ -65,7 +65,6 @@ function AddTicket() {          // display allTask in backlogHTML
 
     }
 }
-//allTasks[0]['profil'].length > 1
 
 
 function activeTask(title, description, category, date, urgency, picture, Name, Mail) {             //function to pass on JSON and remove from backlog
@@ -84,11 +83,11 @@ function activeTask(title, description, category, date, urgency, picture, Name, 
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
     removeTask(title);
     multiProfilRemove();
-
+    feedbackSnackbar();
 }
 
 function removeTask(title) {
-    feedbackSnackbar();
+    
     let element = document.getElementById(`id${title}`);
     element.classList.add("d-none");
     let a = allTasks;
@@ -103,8 +102,8 @@ function feedbackSnackbar() {       // w3 Snackbar / Toast - visual confirmation
     setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 2000);
 }
 
-
-function editTask(i) {              // save after edit
+/*to be continued - not passing right info in and out
+function editTask(titel) {              // save after edit
     let title = allTasks[i]['title'];
     let category = document.getElementById(`category${i}`).innerHTML;
     let description = document.getElementById(`description${i}`).innerHTML;
@@ -134,20 +133,13 @@ function editTask(i) {              // save after edit
     AddTicket();
 
 }
-
-function deleteTask(i) {
-
-    allTasks.splice(i, 1, task);
-    backend.setItem('tasks', JSON.stringify(allTasks));
-    AddTicket();
-}
-
-function multiProfilRemove(){
+*/
+function multiProfilRemove() {
     let elems = document.getElementsByClassName('multiProfil');
-for (let i=0;i<elems.length;i+=1){
-  elems[i].style.display = 'none';
-}
-       
+    for (let i = 0; i < elems.length; i += 1) {
+        elems[i].style.display = 'none';
+    }
+
 }
 
 /*
