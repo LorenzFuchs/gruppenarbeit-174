@@ -11,36 +11,65 @@ async function init() {         // download files from server
 }
 
 function AddTicket() {          // display allTask in backlogHTML
+
     document.getElementById('ticket-wrapper').innerHTML = ``;
     for (let i = 0; i < allTasks.length; i++) {
         task = allTasks[i];
-        document.getElementById('ticket-wrapper').innerHTML += `
-    <div id="id${task['title']}"   class="ticket b-l-${task['category']}">
-    <div class="left-container">
-    <img src="${task['profil'][0]['picture']}" class="ticket-img">
-    <div class="name-mail">
-        <p id="name${i}" contentEditable="true">${task['profil'][0]['Name']}</p>
-        <a id="mail${i}" contentEditable="true" href="#">${task['profil'][0]['Mail']}</a>
-    </div>
-</div>
-    <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>
-    <div class="ticket-details">
-        <p id="description${i}" contentEditable="true">${task['description']} </p>
-    </div>
-    <div class="column">
-    <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">                                                                  
-    <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${task['profil'][0]['picture']}', '${task['profil'][0]['Name']}', '${task['profil'][0]['Mail']}' )" class="icons" src="img/lunch.png">
-    <img onclick="deleteTask('${i}')" class="icons" src="img/save.png">
-    </div>
-</div>`
-            ;
+        profil = allTasks[i]['profil'][0];
+        if (allTasks[i]['profil'].length < 2) {
+            document.getElementById('ticket-wrapper').innerHTML += `
+            <div id="id${task['title']}"   class="ticket b-l-${task['category']}">
+            <div class="left-container">
+            <img src="${profil['picture']}" class="ticket-img">
+            <div class="name-mail">
+                <p id="name${i}" contentEditable="true">${profil['Name']}</p>
+                <a id="mail${i}" contentEditable="true" href="#">${profil['Mail']}</a>
+            </div>
+        </div>
+            <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>
+            <div class="ticket-details">
+                <p id="description${i}" contentEditable="true">${task['description']} </p>
+            </div>
+            <div class="column">
+            <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">                                                                  
+            <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${profil['picture']}', '${profil['Name']}', '${profil['Mail']}' )" class="icons" src="img/lunch.png">
+            <img onclick="deleteTask('${i}')" class="icons" src="img/save.png">
+            </div>
+        </div>`
+                ;
+        } else {
+            for (let j = 0; j < allTasks[i]['profil'].length; j++) {
+                let multiProfil = allTasks[i]['profil'][j];
+                document.getElementById('ticket-wrapper').innerHTML += `
+                <div id="id${task['title']}"   class="ticket b-l-${task['category']}">
+                <div class="left-container">
+                <img src="${ multiProfil['picture']}" class="ticket-img">
+                <div class="name-mail">
+                    <p id="name${i}" contentEditable="true">${ multiProfil['Name']}</p>
+                    <a id="mail${i}" contentEditable="true" href="#">${ multiProfil['Mail']}</a>
+                </div>
+            </div>
+                <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>
+                <div class="ticket-details">
+                    <p id="description${i}" contentEditable="true">${task['description']} </p>
+                </div>
+                <div class="column">
+                <img onclick="editTask('${i}')" class="icons" src="img/pen.png" alt="pen">                                                                  
+                <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${ multiProfil['picture']}', '${ multiProfil['Name']}', '${ multiProfil['Mail']}' )" class="icons" src="img/lunch.png">
+                <img onclick="deleteTask('${i}')" class="icons" src="img/save.png">
+                </div>
+            </div>`
+
+            }
+        }
+
     }
 }
 //allTasks[0]['profil'].length > 1
 
 
 function activeTask(title, description, category, date, urgency, picture, Name, Mail) {             //function to pass on JSON and remove from backlog
-   debugger;
+
     let activeTask = {
         "title": title,
         "category": category,
