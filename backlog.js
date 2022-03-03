@@ -107,6 +107,7 @@ function editTask(i, j) {              // save after edit
     let description = document.getElementById(`description${i}`).innerHTML;
     let date = allTasks[i]['date'];
     let urgency = allTasks[i]['urgency'];
+    
 
 
 if (j === undefined) {
@@ -118,8 +119,8 @@ if (j === undefined) {
         allTasks[i]['profil'][j]['picture']
     ];
 }
-    // ["allTasks[i]['profil'][0]['Name']", "allTasks[i]['profil'][0]['Mail']", "allTasks[i]['profil'][0]['picture']"]
-    debugger;
+    
+ debugger;
     let task = {
        
         'title': title,
@@ -127,7 +128,7 @@ if (j === undefined) {
         'description': description,
         'date': date,
         'urgency': urgency,
-        "profil": profil
+        'profil': [profil]
 
     }
 
@@ -146,7 +147,7 @@ function multiProfilRemove() {
 }
 */
 
-
+// ["allTasks[i]['profil'][0]['Name']", "allTasks[i]['profil'][0]['Mail']", "allTasks[i]['profil'][0]['picture']"]
 
 
 
