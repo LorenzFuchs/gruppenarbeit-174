@@ -82,17 +82,15 @@ function activeTask(title, description, category, date, urgency, picture, Name, 
     console.log(activeTasks);
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
     removeTask(title);
-    multiProfilRemove();
     feedbackSnackbar();
 }
 
 function removeTask(title) {
-    
-    let element = document.getElementById(`id${title}`);
-    element.classList.add("d-none");
+      
     let a = allTasks;
     a.splice(a.findIndex(e => e.title === title), 1);
     backend.setItem('tasks', JSON.stringify(allTasks));
+    AddTicket();
 }
 
 
@@ -102,7 +100,7 @@ function feedbackSnackbar() {       // w3 Snackbar / Toast - visual confirmation
     setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 2000);
 }
 
-/*to be continued - not passing right info in and out
+
 function editTask(titel) {              // save after edit
     let title = allTasks[i]['title'];
     let category = document.getElementById(`category${i}`).innerHTML;
@@ -133,7 +131,7 @@ function editTask(titel) {              // save after edit
     AddTicket();
 
 }
-*/
+/*
 function multiProfilRemove() {
     let elems = document.getElementsByClassName('multiProfil');
     for (let i = 0; i < elems.length; i += 1) {
@@ -141,8 +139,8 @@ function multiProfilRemove() {
     }
 
 }
+*/
 
-/*
 
 
 
