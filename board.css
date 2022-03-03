@@ -95,9 +95,8 @@ span {
 .changeText {
     position: absolute;
     top: 168px;
-    left: 630px;
-    height: 500px;
-    width: 500px;
+    left: 620px;
+    width: 820px;
     background-color: #8e7eff;
     border-radius: 20px;
     
@@ -111,7 +110,7 @@ span {
 }
 
 .inputfields input {
-    width: 300px;
+    width: 500px;
     height: 50px;
     margin-top: 20px;
     border: 0;
@@ -120,7 +119,7 @@ span {
 }
 
 .inputfields select {
-    width: 300px;
+    width: 500px;
     height: 50px;
     margin-top: 20px;
     border: 0;
@@ -130,7 +129,7 @@ span {
 
 .inputfields textarea {
     height: 120px;
-    width: 350px;
+    width: 500px;
     resize: none;
     margin-top: 20px;
     border: 0;
@@ -150,7 +149,8 @@ span {
     margin-right: 30px;
     border: none;
     cursor: pointer;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
 }
 
