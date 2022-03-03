@@ -31,7 +31,7 @@ function AddTicket() {          // display allTask in backlogHTML
                 <p id="description${i}" contentEditable="true">${task['description']} </p>
             </div>
             <div class="column">
-            <img onclick="editTask('${task['title']}')" class="icons" src="img/save.png" alt="pen">                                                                  
+            <img onclick="editTask('${i}')" class="icons" src="img/save.png" alt="pen">                                                                  
             <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${profil['picture']}', '${profil['Name']}', '${profil['Mail']}' )" class="icons" src="img/lunch.png">
             <img onclick="removeTask('${task['title']}')" class="icons" src="img/trash.png">
             </div>
@@ -54,7 +54,7 @@ function AddTicket() {          // display allTask in backlogHTML
                     <p id="description${i}" contentEditable="true">${task['description']} </p>
                 </div>
                 <div class="column">
-                <img onclick="editTask('${task['title']}')" class="icons" src="img/save.png">                                                                  
+                <img onclick="editTask('${i}', '${j}')" class="icons" src="img/save.png">                                                                  
                 <img onclick="activeTask('${task['title']}', '${task['description']}', '${task['category']}', '${task['date']}', '${task['urgency']}', '${multiProfil['picture']}', '${multiProfil['Name']}', '${multiProfil['Mail']}' )" class="icons" src="img/lunch.png">
                 <img onclick="removeTask('${task['title']}')" class="icons" src="img/trash.png">
                 </div>
@@ -101,22 +101,27 @@ function feedbackSnackbar() {       // w3 Snackbar / Toast - visual confirmation
 }
 
 
-function editTask(titel) {              // save after edit
+function editTask(i, j) {              // save after edit
     let title = allTasks[i]['title'];
     let category = document.getElementById(`category${i}`).innerHTML;
     let description = document.getElementById(`description${i}`).innerHTML;
     let date = allTasks[i]['date'];
     let urgency = allTasks[i]['urgency'];
 
+
+if (j === undefined) {
+    j = 0;
+
     let profil = [
-        allTasks[i]['profil'][0]['Name'],
-        allTasks[i]['profil'][0]['Mail'],
-        allTasks[i]['profil'][0]['picture']
+        allTasks[i]['profil'][j]['Name'],
+        allTasks[i]['profil'][j]['Mail'],
+        allTasks[i]['profil'][j]['picture']
     ];
+}
     // ["allTasks[i]['profil'][0]['Name']", "allTasks[i]['profil'][0]['Mail']", "allTasks[i]['profil'][0]['picture']"]
-
+    debugger;
     let task = {
-
+       
         'title': title,
         'category': category,
         'description': description,
@@ -147,6 +152,4 @@ function multiProfilRemove() {
 
 
 
-var text = elem.textContent;
-*/
-//onclick= onblur="activeTask('${i}')" onblur="myFunction() onblur="activeTask('${i}')"
+
