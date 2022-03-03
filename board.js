@@ -119,7 +119,7 @@ function IfIdExist(title, status, date, description, category, picture, name, ma
     document.getElementById('wholestatusofTask').innerHTML += `
     <div id="changeText" class="changeText">
      <div class="inputfields">
-      <input minlength="2" maxlength="20" id="Title_${title}" type="text">
+      <input minlength="2" maxlength="20" id="Title_${title}" type="text" placeholder="Title">
       <select id="category_${category}">
           <option>Marketing</option>
           <option>Design</option>
@@ -127,7 +127,7 @@ function IfIdExist(title, status, date, description, category, picture, name, ma
           <option>Operations</option>
           </select>
       <input type="date" name="" id="date_${date}">
-      <textarea type="text" id="description_${description}"></textarea>
+      <textarea placeholder="Description" type="text" id="description_${description}"></textarea>
       <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}', '${picture}', '${name}', '${mail}')">Ändern</button>
      </div>
     </div>`;
@@ -145,7 +145,7 @@ function IfIdNotExist(title, status, date, description, category, picture, name,
     document.getElementById('wholestatusofTask').innerHTML += `
         <div id="changeText" class="changeText">
          <div class="inputfields">
-         <input minlength="2" maxlength="20" id="Title_${title}" type="text">
+         <input minlength="2" maxlength="20" id="Title_${title}" type="text" placeholder="Title">
           <select id="category_${category}">
           <option>Marketing</option>
           <option>Design</option>
@@ -153,7 +153,7 @@ function IfIdNotExist(title, status, date, description, category, picture, name,
           <option>Operations</option>
           </select>
           <input type="date" name="" id="date_${date}">
-          <textarea type="text" id="description_${description}"></textarea>
+          <textarea placeholder="Description" type="text" id="description_${description}"></textarea>
           <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}', '${picture}', '${name}', '${mail}')">Ändern</button>
          </div>
         </div>`;

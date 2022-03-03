@@ -117,6 +117,7 @@ if (j === undefined) {
         allTasks[i]['profil'][j]['Mail'],
         allTasks[i]['profil'][j]['picture']
     ];
+    
 }
     // ["allTasks[i]['profil'][0]['Name']", "allTasks[i]['profil'][0]['Mail']", "allTasks[i]['profil'][0]['picture']"]
     debugger;
@@ -127,7 +128,7 @@ if (j === undefined) {
         'description': description,
         'date': date,
         'urgency': urgency,
-        "profil": profil
+        "profil": [profil]
 
     }
 
@@ -152,10 +153,3 @@ function multiProfilRemove() {
 
 
 
-<<<<<<< HEAD
-//var text = elem.textContent;
-
-//onclick= onblur="activeTask('${i}')" onblur="myFunction() onblur="activeTask('${i}')"
-=======
-
->>>>>>> 7e12735d22c123ab368f898d48278e21a1c95e1f

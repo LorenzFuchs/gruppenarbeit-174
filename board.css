@@ -154,6 +154,10 @@ span {
 
 }
 
+.inputfields button:hover {
+    opacity: 0.5;
+}
+
 .me1 {
     height: 50px;
     width: 50px;
