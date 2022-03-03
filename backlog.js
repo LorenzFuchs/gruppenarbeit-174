@@ -147,6 +147,6 @@ function multiProfilRemove() {
 
 
 
-var text = elem.textContent;
-*/
+//var text = elem.textContent;
+
 //onclick= onblur="activeTask('${i}')" onblur="myFunction() onblur="activeTask('${i}')"

@@ -22,7 +22,6 @@ span {
    
 }
 
-
 .wholestatusofTask {
     display: flex;
     height: 100%;
@@ -42,25 +41,25 @@ span {
     padding-bottom: 20px;
 }
 
-
-
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
 .openTask {
-    min-width: 200px;
+    min-width: 300px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 150px;
-    background-color: #8e7eff;
+    background-color: #1e3190;
     border-radius: 20px;
     margin-top: 20px;
     cursor: pointer;
     position: relative;
     border: 2px solid transparent;
-    
+    overflow: hidden;
+    color: white;
 }
 
 .openTask div {
@@ -77,7 +76,6 @@ span {
 }
 
 
-
 .trash {
     height: 20px;
     width: 20px;
@@ -91,6 +89,7 @@ span {
 .deletediv {
     display: flex;
     justify-content: center;
+    height: 20px;
 }
 
 .changeText {
@@ -164,5 +163,21 @@ span {
     cursor: pointer;
     margin-left: 5px;
     margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(img/icons8-calendar-150.png) no-repeat;
+    background-position: center;
+    background-size: 30px;
+    background-position-x: center;
+    padding-right: 10px;
+    width: 25px;
+    height: 25px;
+    border-width: thin;
+    cursor: pointer;
 }
 
