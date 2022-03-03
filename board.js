@@ -48,8 +48,8 @@ function updateHTML() {
 }
 
 function startDragging(title) {
-    var val = title;
-    var index = activeTasks.findIndex(function (item, i) {
+    let val = title;
+    let index = activeTasks.findIndex(function (item, i) {
         return item.title === val
     });
 
@@ -89,8 +89,8 @@ function removeHighlight(id) {
 }
 
 function deleteTask(title) {
-    var val = title;
-    var index = activeTasks.findIndex(function (item, i) {
+    let val = title;
+    let index = activeTasks.findIndex(function (item, i) {
         return item.title === val
     });
     activeTasks.splice(index, 1);
@@ -102,19 +102,24 @@ function changeTask(title, status, date, description, category, picture, name, m
 
     let checkIfIdExist = document.getElementById('changeText');
     if (checkIfIdExist) {
-        document.getElementById('changeText').remove();
+        IfIdExist(title, status, date, description, category, picture, name, mail);
+    } else {
+        IfIdNotExist(title, status, date, description, category, picture, name, mail);
+    }
 
+}
 
-        var val = title;
-        var index = activeTasks.findIndex(function (item, i) {
-            return item.title === val
-        });
+function IfIdExist(title, status, date, description, category, picture, name, mail) {
 
-
-        document.getElementById('wholestatusofTask').innerHTML += `
+    document.getElementById('changeText').remove();
+    let val = title;
+    let index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+    document.getElementById('wholestatusofTask').innerHTML += `
     <div id="changeText" class="changeText">
      <div class="inputfields">
-      <input id="Title_${title}" type="text">
+      <input minlength="2" maxlength="20" id="Title_${title}" type="text" placeholder="Title">
       <select id="category_${category}">
           <option>Marketing</option>
           <option>Design</option>
@@ -122,27 +127,25 @@ function changeTask(title, status, date, description, category, picture, name, m
           <option>Operations</option>
           </select>
       <input type="date" name="" id="date_${date}">
-      <textarea type="text" id="description_${description}"></textarea>
+      <textarea placeholder="Description" type="text" id="description_${description}"></textarea>
       <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}', '${picture}', '${name}', '${mail}')">Ändern</button>
      </div>
     </div>`;
+    document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+    document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
+    document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+    document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
+}
 
-        document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
-        document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
-        document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
-        document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
-
-    } else {
-        var val = title;
-        var index = activeTasks.findIndex(function (item, i) {
-            return item.title === val
-        });
-
-
-        document.getElementById('wholestatusofTask').innerHTML += `
+function IfIdNotExist(title, status, date, description, category, picture, name, mail) {
+    let val = title;
+    let index = activeTasks.findIndex(function (item, i) {
+        return item.title === val
+    });
+    document.getElementById('wholestatusofTask').innerHTML += `
         <div id="changeText" class="changeText">
          <div class="inputfields">
-          <input id="Title_${title}" type="text">
+         <input minlength="2" maxlength="20" id="Title_${title}" type="text" placeholder="Title">
           <select id="category_${category}">
           <option>Marketing</option>
           <option>Design</option>
@@ -150,35 +153,26 @@ function changeTask(title, status, date, description, category, picture, name, m
           <option>Operations</option>
           </select>
           <input type="date" name="" id="date_${date}">
-          <textarea type="text" id="description_${description}"></textarea>
+          <textarea placeholder="Description" type="text" id="description_${description}"></textarea>
           <button onclick="changeInput('${title}', '${status}', 'Title_${title}', 'date_${date}', 'description_${description}', 'category_${category}', '${picture}', '${name}', '${mail}')">Ändern</button>
          </div>
         </div>`;
-
-        document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
-        document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
-        document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
-        document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
-    }
-
+    document.getElementById(`Title_${title}`).value = activeTasks[index]['title'];
+    document.getElementById(`category_${category}`).value = activeTasks[index]['category'];
+    document.getElementById(`date_${date}`).value = activeTasks[index]['date'];
+    document.getElementById(`description_${description}`).value = activeTasks[index]['description'];
 }
 
 function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCategory, picture, name, mail) {
-    
-    var val = title;
-    var index = activeTasks.findIndex(function (item, i) {
+
+    let val = title;
+    let index = activeTasks.findIndex(function (item, i) {
         return item.title === val
     });
-
-    
-
     let title1 = document.getElementById(idOfTitle).value;
     let category1 = document.getElementById(idOfCategory).value;
     let date = document.getElementById(idOfDate).value;
     let description = document.getElementById(idOfDescription).value;
-
-
-
     let task = {
 
         'title': title1,
@@ -188,9 +182,6 @@ function changeInput(title, status, idOfTitle, idOfDate, idOfDescription, idOfCa
         'status': status,
         'profil': [picture, name, mail],
     }
-
-    
-
     activeTasks.splice(index, 1, task);
     backend.setItem('activeTasks', JSON.stringify(activeTasks));
     updateHTML();
