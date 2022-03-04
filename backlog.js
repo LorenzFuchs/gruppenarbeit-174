@@ -86,7 +86,7 @@ function activeTask(title, description, category, date, urgency, picture, Name, 
 }
 
 function removeTask(title) {
-      
+
     let a = allTasks;
     a.splice(a.findIndex(e => e.title === title), 1);
     backend.setItem('tasks', JSON.stringify(allTasks));
@@ -108,34 +108,45 @@ function editTask(i, j) {              // save after edit
     let date = allTasks[i]['date'];
     let urgency = allTasks[i]['urgency'];
     let profil = [];
-    
-debugger;
-if (j === undefined) {
-    j = 0;
 
-    profil = {
-        Name: allTasks[i]['profil'][j]['Name'],
-        Mail: allTasks[i]['profil'][j]['Mail'],
-        picture: allTasks[i]['profil'][j]['picture']
-    };
-    
-}
-    
-     let task = {
-       
-        'title': title,
-        'category': category,
-        'description': description,
-        'date': date,
-        'urgency': urgency,
-        'profil': [profil]
+
+    if (j === undefined) {
+        j = 0;
+
+        profil = {
+            Name: allTasks[i]['profil'][j]['Name'],
+            Mail: allTasks[i]['profil'][j]['Mail'],
+            picture: allTasks[i]['profil'][j]['picture']
+        };
 
     }
+    else {
 
-    allTasks.splice(i, 1, task);
-    backend.setItem('tasks', JSON.stringify(allTasks));
-    AddTicket();
+        for (let k = 0; k < j.length; k++) {
+            let ele = j[k];
+            profil = {
+                Name: allTasks[i]['profil'][ele]['Name'],
+                Mail: allTasks[i]['profil'][ele]['Mail'],
+                picture: allTasks[i]['profil'][ele]['picture']
+            };
+        }
 
+        let task = {
+
+            'title': title,
+            'category': category,
+            'description': description,
+            'date': date,
+            'urgency': urgency,
+            'profil': [profil]
+
+        }
+
+        allTasks.splice(i, 1, task);
+        backend.setItem('tasks', JSON.stringify(allTasks));
+        AddTicket();
+
+    }
 }
 /*
 function multiProfilRemove() {
