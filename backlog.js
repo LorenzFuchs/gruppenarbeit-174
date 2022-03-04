@@ -107,33 +107,28 @@ function editTask(i, j) {              // save after edit
     let description = document.getElementById(`description${i}`).innerHTML;
     let date = allTasks[i]['date'];
     let urgency = allTasks[i]['urgency'];
+    let profil = [];
     
-
-
+debugger;
 if (j === undefined) {
     j = 0;
 
-    let profil = [
-        allTasks[i]['profil'][j]['Name'],
-        allTasks[i]['profil'][j]['Mail'],
-        allTasks[i]['profil'][j]['picture']
-    ];
+    profil = {
+        Name: allTasks[i]['profil'][j]['Name'],
+        Mail: allTasks[i]['profil'][j]['Mail'],
+        picture: allTasks[i]['profil'][j]['picture']
+    };
     
 }
     
- debugger;
-    let task = {
+     let task = {
        
         'title': title,
         'category': category,
         'description': description,
         'date': date,
         'urgency': urgency,
-<<<<<<< HEAD
         'profil': [profil]
-=======
-        "profil": [profil]
->>>>>>> 98c443f725b2c9f56bb82078e030e9a539cd0cf9
 
     }
 
