@@ -130,7 +130,7 @@ function editTask(i, j) {              // save after edit
                 picture: allTasks[i]['profil'][ele]['picture']
             };
         }
-
+    }
         let task = {
 
             'title': title,
@@ -146,7 +146,7 @@ function editTask(i, j) {              // save after edit
         backend.setItem('tasks', JSON.stringify(allTasks));
         AddTicket();
 
-    }
+    
 }
 /*
 function multiProfilRemove() {
