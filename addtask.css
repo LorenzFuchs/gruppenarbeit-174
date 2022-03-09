@@ -135,10 +135,10 @@ textarea {
 .absolut {
     display: flex;
     justify-content: end;
-    
+
 }
 
-#addtask-container{
+#addtask-container {
     margin-left: 170px;
 }
 
@@ -157,7 +157,7 @@ textarea {
     background-color: #f1f1f1;
     min-width: 160px;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     margin-left: 60px;
     height: 54px;
@@ -203,7 +203,7 @@ textarea {
     display: flex;
 }
 
-.setImages{
+.setImages {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
@@ -236,7 +236,7 @@ input {
     font-size: 20px;
 }
 
-textarea{
+textarea {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -247,7 +247,7 @@ textarea{
     height: 130px;
 }
 
-select{
+select {
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -275,7 +275,39 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media(max-width: 1000px) {
-    .left {
-    margin-left: 100;
+
+    .media-row {
+        display: flex;
+        flex-direction: column;
     }
+
+    #addtask-container {
+        margin: 100px 8px 8px 8px;
+    }
+
+    .column {
+        width: 100vw;
+    }
+
+    .bgr-addtask {
+        margin-bottom: 8px;
+        margin-right: 12px;
+    }
+
+    textarea {
+        width: 230px;
+    }
+
+    input {
+        width: 230px;
+    }
+
+    select {
+        width: 230px;
+    }
+
+
+
+
+
 }
