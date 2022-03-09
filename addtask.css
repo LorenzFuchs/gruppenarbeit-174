@@ -273,3 +273,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-width: thin;
     cursor: pointer;
 }
+
+@media(max-width: 1000px) {
+    .left {
+    margin-left: 100;
+    }
+}

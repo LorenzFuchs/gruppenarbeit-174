@@ -1,15 +1,15 @@
 body {
     margin: 0;
     height: 100vh;
-    
-    
+
+
 }
 
 .Navigation {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    
+
 }
 
 .Navigation div {
@@ -29,7 +29,7 @@ body {
 
 .Navigation a:hover {
     opacity: 1;
-    
+
 }
 
 .Navbar {
@@ -40,8 +40,8 @@ body {
     align-items: center;
     flex-direction: column;
     position: fixed;
-    
-  
+
+
 }
 
 .Logo img {
@@ -79,3 +79,36 @@ span {
     height: 100%;
 }
 
+@media(max-width: 1000px) {
+    .Navbar {
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        width: 100vw;
+        height: 110px;
+        justify-content: space-around;
+    }
+
+    .Logo img {
+        margin-top: 0px;
+    }
+
+    .Navigation_all {
+        display: flex;
+    flex-direction: row;
+    height: 20px;    
+}
+
+.Navigation {
+    display: flex;
+    flex-direction: column;
+margin-top: 0;
+}
+
+.Navigation div {
+margin: 0;
+}
+
+
+
+}

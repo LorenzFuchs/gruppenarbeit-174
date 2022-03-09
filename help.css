@@ -6,6 +6,7 @@ h1 {
 h2 {
     color: #1e3190;
     font-size: large;
+    margin-top: 2em;
 }
 
 h3 {
@@ -21,4 +22,13 @@ h3 {
 
 .left {
     margin-left: 170px;
+    margin-right: 170px;
+}
+
+@media(max-width: 1000px) {
+    .left {
+        margin: 120px 8px 0 8px;
+    }
+    
+
 }
