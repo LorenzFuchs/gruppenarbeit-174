@@ -11,15 +11,17 @@ span {
     margin-right: 20px;
     font-size: 20px;
     margin-bottom: 10px;
+    white-space: nowrap;
+    
 }
 
 .statusOfTask {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 30px;
-    margin-right: 30px;
-   
+    width: 100%;
+    
+
 }
 
 .wholestatusofTask {
@@ -27,11 +29,13 @@ span {
     height: 100%;
     margin-top: 50px;
     margin-left: 150px;
-    
+    width: 100%;
+   
+
 }
 
 .status {
-    width: 380px;
+    width: 100%;
     background-color: #f4f3fb;
     min-height: 800px;
     display: flex;
@@ -39,6 +43,8 @@ span {
     flex-direction: column;
     border-radius: 20px;
     padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .drag-area-highlight {
@@ -46,12 +52,10 @@ span {
 }
 
 .openTask {
-    min-width: 300px;
-    max-width: 300px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 150px;
     background-color: #1e3190;
     border-radius: 20px;
     margin-top: 20px;
@@ -67,8 +71,8 @@ span {
     margin-top: 10px;
 }
 
-.openTask:hover {
-    border: 2px solid blue;
+.test:hover {
+    transform: scale(1.05);
 }
 
 .test:hover .trash {
@@ -99,11 +103,11 @@ span {
     width: 820px;
     background-color: #6b78b5;
     border-radius: 20px;
-    
+
 
 }
 
-.inputfields{
+.inputfields {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,3 +189,118 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
+.overStatusOfTask {
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.test {
+    width: 100%;
+}
+
+@media(max-width: 1000px) {
+    .wholestatusofTask {
+        flex-direction: column;
+        margin-top: 265px;
+        width: 100%;
+        margin-left: auto;
+        position: relative;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .status {
+        min-height: 100px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .Category {
+        display: none;
+    }
+
+    .Date {
+        display: none;
+    }
+
+    .openTask {
+        flex-direction: unset;
+        justify-content: space-between;
+        margin-top: 5px;
+        width: 90%;
+        min-width: unset;
+        max-width: unset;
+    }
+
+    .me1 {
+        display: flex;
+        height: 30px;
+        width: 30px;
+        margin-bottom: 0;
+    }
+
+    .openTask div {
+        margin-top: 0;
+    }
+
+    .test {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+    
+
+    .deletediv {
+        width: 5%;
+        margin-left: 5px;
+        
+    }
+
+    .changeText {
+        left: 0;
+        width: 100%;
+        position: fixed;
+    }
+
+    .inputfields input {
+        width: 100%;
+    }
+
+    .inputfields select {
+        width: 100%;
+    }
+
+    .inputfields textarea {
+        width: 100%;
+    }
+
+    .inputfields {
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+
+    .status {
+        width: 100%;
+    }
+
+    .statusOfTask {
+        overflow: hidden;
+    }
+
+    .trash {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .test:hover {
+        transform: none;
+    }
+
+    .overStatusOfTask {
+      margin-left: 0;
+      margin-right: 0;
+    }
+}

@@ -21,25 +21,25 @@
 <body onload="init(), includeHTML()">
     <div class="w3_navbar_height" w3-include-html="Templates/navbar.html"></div>
     <div id="wholestatusofTask" class="wholestatusofTask">
-        <div>
+        <div class="overStatusOfTask">
             <div class="statusOfTask">
                 <span>TO DO</span>
                 <div class="status" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
             </div>
         </div>
-        <div>
+        <div class="overStatusOfTask">
             <div class="statusOfTask">
                 <span>IN PROGRESS</span>
                 <div class="status" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
             </div>
         </div>
-        <div>
+        <div class="overStatusOfTask">
             <div class="statusOfTask">
                 <span>TESTING</span>
                 <div class="status" id="testing" ondrop="moveTo('testing')" ondragleave="removeHighlight('testing')" ondragover="allowDrop(event); highlight('testing')"></div>
             </div>
         </div>
-        <div>
+        <div class="overStatusOfTask">
             <div class="statusOfTask">
                 <span>DONE</span>
                 <div class="status" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>

@@ -61,9 +61,9 @@ function generateTodoHTML(element) {
     return `
     <div class="test" draggable="true" ondragstart="startDragging('${element['title']}')">
      <div onclick="changeTask('${element['title']}', '${element['status']}', '${element['date']}', '${element['description']}', '${element['category']}', '${element['profil'][0]}', '${element['profil'][1]}', '${element['profil'][2]}')" class="openTask" id="openTask${element['title']}">
-      <div><b>${element['title']}</b></div>
-      <div>${element['category']}</div>
-      <div>${element['date']}</div>
+      <div class="Title"><b>${element['title']}</b></div>
+      <div class="Category">${element['category']}</div>
+      <div class="Date">${element['date']}</div>
       <div><img class="me1" src="${element['profil'][0]}"></div>
      </div>
      <div class="deletediv"><img onclick="deleteTask('${element['title']}')" class="trash" src="img/trash.png"></div>

@@ -87,6 +87,7 @@ span {
         width: 100vw;
         height: 110px;
         justify-content: space-around;
+        z-index: 10;
     }
 
     .Logo img {
