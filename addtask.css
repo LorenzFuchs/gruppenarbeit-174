@@ -41,8 +41,7 @@ h3 {
     background-color: aliceblue;
     border-radius: 25px;
     padding: 20px;
-    width: 100%;
-
+    
 }
 
 
@@ -118,7 +117,7 @@ textarea {
 }
 
 .left {
-    margin-left: 12px;
+    margin-left: auto;
 }
 
 .asignedto {
@@ -174,7 +173,6 @@ textarea {
 }
 
 .dropbtn {
-
     background-image: url(img/icon\ plus.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -276,6 +274,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 @media(max-width: 1000px) {
 
+    body {
+        overflow: hidden;
+    }
+
     .media-row {
         display: flex;
         flex-direction: column;
@@ -286,12 +288,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
     .column {
-        width: 100vw;
+        width: auto;
+        overflow: overlay;
+        margin-left: 8px;
+        margin-right: 8px;
     }
 
     .bgr-addtask {
         margin-bottom: 8px;
-        margin-right: 12px;
+        margin-right: auto;
     }
 
     textarea {
