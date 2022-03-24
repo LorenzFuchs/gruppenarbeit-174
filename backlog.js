@@ -22,8 +22,8 @@ function AddTicket() {          // display allTask in backlogHTML
             <div class="left-container">
             <img src="${profil['picture']}" class="ticket-img">
             <div class="name-mail">
-                <p id="name${i}" contentEditable="true">${profil['Name']}</p>
-                <a id="mail${i}" contentEditable="true" href="#">${profil['Mail']}</a>
+                <p class= "name" id="name${i}" contentEditable="true">${profil['Name']}</p>
+                <a class= "mail" id="mail${i}" contentEditable="true" href="#">${profil['Mail']}</a>
             </div>
         </div>
             <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>

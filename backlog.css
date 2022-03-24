@@ -2,6 +2,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'PT Sans', sans-serif;
+    height: 100vh;
     display: flex;
 }
 
@@ -10,9 +11,14 @@ h1 {
     margin-bottom: 0.2em;
 }
 
-.header-container {
+
+.wrapper-content {
     margin-left: 12px;
+    height: 100%;
+    margin-left: 160px;
+    width: 100%;
 }
+
 
 .bold {
     font-family: 'PT Sans BOLD'
@@ -42,7 +48,7 @@ h1 {
 .ticket {
     background-color: rgb(244, 243, 251);
     border-radius: 6px;
-    margin: 12px;
+    margin-top: 12px;
     padding: 3px;
     display: flex;
     justify-content: space-evenly;
@@ -76,7 +82,7 @@ h1 {
 
 .name-mail {
     margin-left: 2em;
-    min-width: 300px;
+  
 }
 
 .ticket-category {
@@ -89,9 +95,7 @@ h1 {
 
 .left-container {
     display: flex;
-
     width: 420px;
-
 }
 
 .d-none {
@@ -193,6 +197,33 @@ h1 {
     margin-left: 170px;
 }
 
-.multiProfil{
+.multiProfil {
     display: flex;
 }
+
+@media(max-width: 1000px) {
+    .wrapper-content {
+        margin-top: 75px;
+        margin-left: 24px;
+        
+    }
+
+    @media(max-width: 640px) {
+        
+
+.name-mail {
+    margin-left: 1em;
+ }
+    }
+    @media(max-width: 540px){
+       .mail{
+        display: none;
+       }
+       .name-mail {
+       align-self: center;
+       }
+        .ticket-category{
+            display: none;
+        }
+        }
+    }
