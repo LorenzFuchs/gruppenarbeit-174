@@ -78,14 +78,16 @@ span {
 .w3_navbar_height {
     height: 100%;
 }
-
+.end-end-ajustment{
+    margin-top: 8px;
+}
 @media(max-width: 1000px) {
     .Navbar {
         display: flex;
         flex-direction: row;
         position: fixed;
         width: 100vw;
-        height: 110px;
+        height: 95px;
         justify-content: space-around;
         z-index: 10;
     }
@@ -94,22 +96,37 @@ span {
         margin-top: 0px;
     }
 
-    .Navigation_all {
+      .Navigation {
         display: flex;
-    flex-direction: row;
-    height: 20px;    
-}
+        flex-direction: row;
+        width: 335px;
+        justify-content: space-between;
+    }
 
-.Navigation {
-    display: flex;
-    flex-direction: column;
-margin-top: 0;
-}
+    .Navigation div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 0;
+    }
+    }
+    .end-end-ajustment{
+        padding-left: 8px;
+        padding-right: 8px;
+       
+    }
 
-.Navigation div {
-margin: 0;
-}
+    @media(max-width: 540px) {
+        .end-end-ajustment{
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+
+        .Navigation {
+        width: 240px;
+        }
+
+    }
 
 
-
-}
+    
