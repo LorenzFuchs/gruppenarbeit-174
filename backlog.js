@@ -26,9 +26,12 @@ function AddTicket() {          // display allTask in backlogHTML
                 <a class= "mail" id="mail${i}" contentEditable="true" href="#">${profil['Mail']}</a>
             </div>
         </div>
+        <div class="right-container">
             <div id="category${i}" contentEditable="true" class="ticket-category">${task['category']}</div>
             <div class="ticket-details">
-                <p id="description${i}" contentEditable="true">${task['description']} </p>
+                <p id="description${i}" contentEditable="true" class="ticket-details">${task['description']} </p>
+            </div>
+            
             </div>
             <div class="column">
             <img onclick="editTask('${i}')" class="icons" src="img/save.png" alt="pen">                                                                  
@@ -131,22 +134,22 @@ function editTask(i, j) {              // save after edit
             };
         }
     }
-        let task = {
+    let task = {
 
-            'title': title,
-            'category': category,
-            'description': description,
-            'date': date,
-            'urgency': urgency,
-            'profil': [profil]
+        'title': title,
+        'category': category,
+        'description': description,
+        'date': date,
+        'urgency': urgency,
+        'profil': [profil]
 
-        }
+    }
 
-        allTasks.splice(i, 1, task);
-        backend.setItem('tasks', JSON.stringify(allTasks));
-        AddTicket();
+    allTasks.splice(i, 1, task);
+    backend.setItem('tasks', JSON.stringify(allTasks));
+    AddTicket();
 
-    
+
 }
 /*
 function multiProfilRemove() {
